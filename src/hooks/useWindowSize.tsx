@@ -3,15 +3,15 @@ import useEventListener from "./useEventLIstener";
 import isSSR from "../utils/isSSR";
 
 interface WindowSize {
-  width: number | undefined;
-  height: number | undefined;
+  width: number;
+  height: number;
   windowReady: boolean;
 }
 
 function useWindowSize(): WindowSize {
   const [windowSize, setWindowSize] = useState<WindowSize>({
-    width: undefined,
-    height: undefined,
+    width: 0,
+    height: 0,
     windowReady: false,
   });
 
