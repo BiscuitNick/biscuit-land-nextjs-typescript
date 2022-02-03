@@ -3,8 +3,8 @@ import useEventListener from "./useEventLIstener";
 import isSSR from "../utils/isSSR";
 
 interface WindowSize {
-  width: number; //| undefined;
-  height: number; //| undefined;
+  width: number | undefined;
+  height: number | undefined;
   windowReady: boolean;
 }
 
