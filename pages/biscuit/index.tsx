@@ -1,5 +1,6 @@
 import type { GetServerSideProps, NextPage } from "next";
-import Biscuit from "../src/components/Biscuit";
+import useWindowSize from "../../src/hooks/useWindowSize";
+import Biscuit from "../../src/components/Biscuit";
 
 interface Props {
   buildParams?: any;
@@ -22,18 +23,18 @@ export const getServerSideProps: GetServerSideProps = async (context: {
   const contentIDs = ["rect", "eye_0", "eye_1"];
   const contentObject = {
     eye_0: {
-      props: { w2h: 1, outerShape: "Circle" },
+      props: { w2h: 0.5, outerShape: "Circle" },
       relatives: {
-        r_outerSize: 0.08,
+        r_outerSize: 0.1,
         r_x: 0.4,
         r_y: 0.3,
         r_outer2inner: 0.5,
       },
     },
     eye_1: {
-      props: { w2h: 1, innerShape: "Circle", innerRotation: 45 },
+      props: { w2h: 2, innerShape: "Rect", innerRotation: 45 },
       relatives: {
-        r_outerSize: 0.08,
+        r_outerSize: 0.1,
         r_x: 0.6,
         r_y: 0.3,
         r_outer2inner: 0.5,
@@ -75,9 +76,9 @@ export const getServerSideProps: GetServerSideProps = async (context: {
     "r_height",
   ];
 
-  //TODO VALIDATE VALUES
+  // validate keys...
 
-  ids.map((id) => {
+  const values = ids.map((id) => {
     const datapairs = query[id].split(",");
 
     const relatives: any = {};
