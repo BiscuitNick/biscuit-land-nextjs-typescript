@@ -17,10 +17,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@biscuitnick/react-biscuit@^0.2.31":
-  version "0.2.31"
-  resolved "https://registry.yarnpkg.com/@biscuitnick/react-biscuit/-/react-biscuit-0.2.31.tgz#2b5e981cad907825b08aedab38ce883e51a70247"
-  integrity sha512-33y3XrcwHtA1nTw6Ynzz6SoTYRZbR92yOYKPlmAx8iFbzYwyIpHyZSjC0Lh7SbF91Sl4evZlpp4+Melsxafx0Q==
+"@biscuitnick/react-biscuit@^0.2.32":
+  version "0.2.32"
+  resolved "https://registry.yarnpkg.com/@biscuitnick/react-biscuit/-/react-biscuit-0.2.32.tgz#d567015083d7cd5a9bce47bccbc89324b92d3c1f"
+  integrity sha512-YVJKL6AJU1aLCsXqZ5wNvyfVyNBrkFwUx/lpZacwam2CqAba5AFqSdv60+H5EJkkiqWah3a/e+at7aCOo6+cRg==
   dependencies:
     "@react-spring/konva" "^9.4.2"
     canvas "^2.9.0"
@@ -1016,6 +1016,11 @@ globby@^11.0.4:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
+hamt_plus@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hamt_plus/-/hamt_plus-1.0.2.tgz#e21c252968c7e33b20f6a1b094cd85787a265601"
+  integrity sha1-4hwlKWjH4zsg9qGwlM2FeHomVgE=
+
 has-bigints@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/has-bigints/-/has-bigints-1.0.1.tgz#64fe6acb020673e3b78db035a5af69aa9d07b113"
@@ -1658,6 +1663,13 @@ readable-stream@^3.6.0:
     inherits "^2.0.3"
     string_decoder "^1.1.1"
     util-deprecate "^1.0.1"
+
+recoil@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/recoil/-/recoil-0.6.1.tgz#6fdf1ba6cb20b5a2e54ec4abcbdaa287e8a03fa2"
+  integrity sha512-J7oT3LZl2vpyFClgSUpOQjpykz84VSX/NJE/PavAtR8n7Z+whEdVBPUtwc2TEWjONeL/lJmiac2XQ+qEOQA52Q==
+  dependencies:
+    hamt_plus "1.0.2"
 
 regenerator-runtime@^0.13.4:
   version "0.13.9"
