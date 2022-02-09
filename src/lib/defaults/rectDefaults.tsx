@@ -1,8 +1,8 @@
 const rectDefaults = {
   props: {
     rotation: 0,
-    fill: "#000",
-    stroke: "#000",
+    fill: "#000000",
+    stroke: "#000000",
     draggable: false,
     cornerRadius: 0,
   },

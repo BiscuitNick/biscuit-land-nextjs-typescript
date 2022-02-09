@@ -1,4 +1,4 @@
-import rectDefaults from "../lib/rectDefaults";
+import { rectDefaults } from "../defaults";
 
 export interface rectBuild {
   props: {

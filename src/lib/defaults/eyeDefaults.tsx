@@ -10,10 +10,10 @@ const eyeDefaults = {
     //Strings
     innerShape: "Circle",
     outerShape: "Circle",
-    innerFill: "#000",
-    outerFill: "#fff",
-    innerStroke: "#000",
-    outerStroke: "#000",
+    innerFill: "#000000",
+    outerFill: "#ffffff",
+    innerStroke: "#000000",
+    outerStroke: "#ffffff",
     //Booleans
     disableClip: false,
   },

@@ -2,6 +2,10 @@ export interface ColorPickerProps {
   label: string;
   value: string;
   onChange: any; //TODO cleanup onChange Type
+
+  //TODO
+  onToggle?: any; //
+  toggleValue?: boolean;
 }
 
 const ColorPicker = (props: ColorPickerProps) => {
@@ -9,15 +13,13 @@ const ColorPicker = (props: ColorPickerProps) => {
 
   return (
     <div
-      style={
-        {
-          // gridColumn: "1/3",
-          // display: "grid",
-          // gridTemplateColumns: "1fr 1fr 1fr",
-        }
-      }
+      style={{
+        gridColumn: "1/3",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr",
+      }}
     >
-      <label className={"attributeLabel"}>
+      <label style={{ display: "grid" }}>
         <span style={{ margin: "auto" }}>{label}</span>
       </label>
 

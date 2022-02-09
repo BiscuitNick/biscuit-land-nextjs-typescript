@@ -7,7 +7,7 @@ export interface contentObject {
 
 export const contentObjectAtom = atom({
   key: "contentObjectAtom",
-  default: {} as contentObject,
+  default: {} as any,
 });
 
 export interface selectedContentID {
@@ -17,4 +17,15 @@ export interface selectedContentID {
 export const selectedContentIDAtom = atom({
   key: "selectedContentIDAtom",
   default: "",
+});
+
+//
+export const biscuitIDsAtom = atom({
+  key: "biscuitIDsAtom",
+  default: [],
+});
+
+export const biscuitObjectAtom = atom({
+  key: "biscuitObjectAtom",
+  default: {},
 });

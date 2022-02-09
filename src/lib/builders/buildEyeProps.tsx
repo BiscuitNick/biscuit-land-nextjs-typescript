@@ -1,4 +1,4 @@
-import eyeDefaults from "../lib/eyeDefaults";
+import { eyeDefaults } from "../defaults";
 
 export interface eyeBuild {
   props: {
