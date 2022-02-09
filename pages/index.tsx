@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps = () => {
             rotation: 0,
             draggable: true,
             fill: "#3300ff",
-            stroke: "",
+            // stroke: "",
             // handleClick: (e: { target: { attr: any } }) =>
             // console.log(e.target.attr),
           },
@@ -125,7 +125,7 @@ export const getStaticProps: GetStaticProps = () => {
             rotation: 0,
             draggable: true,
             fill: "#3300ff",
-            stroke: "",
+            // stroke: "",
             // handleClick: (e: { target: { attr: any } }) =>
             // console.log(e.target.attr),
           },
@@ -160,6 +160,7 @@ export const getStaticProps: GetStaticProps = () => {
         innerShape: "Rect",
         innerFill: "#000000",
         outerFill: "#ffffff",
+        draggable: true,
       },
       relatives: {
         r_outerSize: 0.08,
@@ -177,6 +178,7 @@ export const getStaticProps: GetStaticProps = () => {
 
         innerFill: "#00f200",
         outerFill: "#f20000",
+        draggable: true,
       },
       relatives: {
         r_outerSize: 0.08,
@@ -190,7 +192,8 @@ export const getStaticProps: GetStaticProps = () => {
         rotation: 0,
         draggable: true,
         fill: "#3300ff",
-        stroke: "",
+        // stroke: "",
+
         // handleClick: (e: { target: { attr: any } }) =>
         // console.log(e.target.attr),
       },
@@ -204,6 +207,7 @@ export const getStaticProps: GetStaticProps = () => {
     image_0: {
       props: {
         rotation: 0,
+        draggable: true,
       },
       relatives: {
         r_x: 0.5,

@@ -17,10 +17,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@biscuitnick/react-biscuit@^0.2.32":
-  version "0.2.32"
-  resolved "https://registry.yarnpkg.com/@biscuitnick/react-biscuit/-/react-biscuit-0.2.32.tgz#d567015083d7cd5a9bce47bccbc89324b92d3c1f"
-  integrity sha512-YVJKL6AJU1aLCsXqZ5wNvyfVyNBrkFwUx/lpZacwam2CqAba5AFqSdv60+H5EJkkiqWah3a/e+at7aCOo6+cRg==
+"@biscuitnick/react-biscuit@^0.2.36":
+  version "0.2.36"
+  resolved "https://registry.yarnpkg.com/@biscuitnick/react-biscuit/-/react-biscuit-0.2.36.tgz#78bf82913b3666f1497e1071fe8f00ada5838ca8"
+  integrity sha512-lhsxRvCWaYkUXtS4fVQ+pCDm4OUwse6xKxl/zsUP8UOWoW/Eeo+csW0IivwMWwXRHS0Vc5E1f1cj/8wEwIiYSA==
   dependencies:
     "@react-spring/konva" "^9.4.2"
     canvas "^2.9.0"

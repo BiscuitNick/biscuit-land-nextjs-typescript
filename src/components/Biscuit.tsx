@@ -35,6 +35,8 @@ const Biscuit = (props: biscuitParams) => {
   const [buildParams, setObject] = useRecoilState(contentObjectAtom);
   const setSelectedID = useSetRecoilState(selectedContentIDAtom);
 
+  const dragItem: any = useRef(null);
+
   useEffect(() => {
     setObject(initParams);
   }, [initParams]);
@@ -43,6 +45,17 @@ const Biscuit = (props: biscuitParams) => {
     setSelectedID(id);
     let content = buildParams.contentObject[id];
     console.log(content);
+  };
+
+  const handleDrag = (id: string, e) => {
+    if (dragItem.current != id) {
+      dragItem.current = id;
+      console.log(id, "drag start");
+    } else {
+      console.log(id, "drag finished");
+      console.log(e.target.attrs);
+      dragItem.current = "";
+    }
   };
 
   const squareWH = Math.min(width, height);
@@ -79,7 +92,13 @@ const Biscuit = (props: biscuitParams) => {
               },
               handleClick: () => handleClick(id),
             };
-            return <Eye key={id} {...eyeprops} />;
+            return (
+              <Eye
+                key={id}
+                {...eyeprops}
+                handleDrag={(e) => handleDrag(id, e)}
+              />
+            );
           case "rect":
             let rectProps = buildRectProps({
               ...data,
@@ -88,6 +107,7 @@ const Biscuit = (props: biscuitParams) => {
 
             return (
               <MyRect
+                handleDrag={(e) => handleDrag(id, e)}
                 key={id}
                 {...rectProps}
                 handleClick={() => handleClick(id)}
@@ -101,6 +121,7 @@ const Biscuit = (props: biscuitParams) => {
 
             return (
               <MyImage
+                handleDrag={(e) => handleDrag(id, e)}
                 key={id}
                 {...imageProps}
                 src={
@@ -123,10 +144,7 @@ const Biscuit = (props: biscuitParams) => {
   return (
     <>
       <Board width={width} height={height} canvasRef={canvasRef}>
-        <Group {...centerBox}>
-          {myContent}
-
-        </Group>
+        <Group {...centerBox}>{myContent}</Group>
       </Board>
       <div style={{ position: "absolute", left: 0, top: 0 }}>
         <Editor />
@@ -137,57 +155,56 @@ const Biscuit = (props: biscuitParams) => {
 
 export default Biscuit;
 
+// {
+//   /* <Circle
+//   fill={"#00ff00"}
+//   width={60}
+//   height={60}
+//   x={width / 2 - 60}
+//   y={height / 2}
+// /> */
+// }
+// {
+//   /* <Text text={"hello"} /> */
+// }
+// {
+//   /* <Wedge
+//   x={width / 2}
+//   y={height / 2}
+//   width={50}
+//   height={50}
+//   radius={30}
+//   fill={"red"}
+//   angle={350}
+//   rotation={0}
+// /> */
+// }
+// {
+//   /* <Ellipse
+//   radiusX={100 / 2}
+//   radiusY={200 / 2}
+//   x={width / 2}
+//   y={height / 2}
+//   fill={"#fff000"}
+// />
+// <Rect
+//   width={100 - 5}
+//   height={200}
+//   x={width / 2 - 100}
+//   y={height / 2 - 200}
+//   fill={"#00ff00"}
+//   draggable={true}
+// /> */
+// }
 
-          // {
-          //   /* <Circle
-          //   fill={"#00ff00"}
-          //   width={60}
-          //   height={60}
-          //   x={width / 2 - 60}
-          //   y={height / 2}
-          // /> */
-          // }
-          // {
-          //   /* <Text text={"hello"} /> */
-          // }
-          // {
-          //   /* <Wedge
-          //   x={width / 2}
-          //   y={height / 2}
-          //   width={50}
-          //   height={50}
-          //   radius={30}
-          //   fill={"red"}
-          //   angle={350}
-          //   rotation={0}
-          // /> */
-          // }
-          // {
-          //   /* <Ellipse
-          //   radiusX={100 / 2}
-          //   radiusY={200 / 2}
-          //   x={width / 2}
-          //   y={height / 2}
-          //   fill={"#fff000"}
-          // />
-          // <Rect
-          //   width={100 - 5}
-          //   height={200}
-          //   x={width / 2 - 100}
-          //   y={height / 2 - 200}
-          //   fill={"#00ff00"}
-          //   draggable={true}
-          // /> */
-          // }
-
-          // {
-          //   /* <MyImage
-          //   x={0}
-          //   y={0}
-          //   width={332}
-          //   height={280}
-          //   src={
-          //     "https://res.cloudinary.com/drk1nv578/image/upload/t_optimized/v1612050978/biscuitland/biscuitnoshadow_e49tg3.png"
-          //   }
-          // /> */
-          // }
+// {
+//   /* <MyImage
+//   x={0}
+//   y={0}
+//   width={332}
+//   height={280}
+//   src={
+//     "https://res.cloudinary.com/drk1nv578/image/upload/t_optimized/v1612050978/biscuitland/biscuitnoshadow_e49tg3.png"
+//   }
+// /> */
+// }

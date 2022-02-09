@@ -1,8 +1,7 @@
 const imageDefaults = {
   props: {
     rotation: 0,
-    fill: "",
-    stroke: "",
+
     draggable: false,
     cornerRadius: 0,
     keepAspectRatio: true, //
