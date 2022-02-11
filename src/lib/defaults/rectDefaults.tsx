@@ -5,12 +5,17 @@ const rectDefaults = {
     stroke: "#000000",
     draggable: false,
     cornerRadius: 0,
+    immediateXY: true,
+
+    strokeEnabled: true,
+    fillEnabled: true,
   },
   relatives: {
     r_x: 0.5,
     r_y: 0.5,
     r_width: 1,
     r_height: 1,
+    r_strokeWidth: 0.01,
   },
 };
 

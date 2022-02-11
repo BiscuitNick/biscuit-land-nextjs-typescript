@@ -14,3 +14,142 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.attributeLabel {
+  width: 100%;
+  height: 38px;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: auto;
+  background: black;
+  margin: auto;
+  color: white;
+  border-radius: 5px;
+}
+
+.attributeInput {
+  width: 95%;
+  margin: auto;
+  height: 50px;
+  user-select: auto;
+  border-radius: 5px;
+  /* box-shadow: 1px 1px 1px 1px #000; */
+}
+
+.inputContainer2Wide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.inputContainer3Wide {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+}
+
+/* SwitchInput */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+
+  margin: auto;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switchspan {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.switchspan:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.round {
+  border-radius: 34px;
+}
+
+.round:before {
+  border-radius: 50%;
+}
+
+input:checked + .switchspan {
+  background-color: #2196f3;
+}
+
+input:focus + .switchspan {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .switchspan:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* SliderInput */
+.sliderInput {
+  grid-column: 1/3;
+
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 95%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+  margin: auto;
+  /* margin-bottom: 10px; */
+  cursor: pointer;
+
+  /* background: white; */
+
+  background: rgba(0, 0, 0, 0.7);
+
+  /* background: linear-gradient(to right, blue 0%, red 100%); */
+  border-radius: 10px;
+  height: 50px;
+}
+
+.sliderInput:focus {
+  outline: none;
+}
+
+.sliderInput::-ms-track {
+  width: 95%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.sliderInput::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: limegreen;
+  height: 60px;
+  cursor: pointer;
+  color: #ffffff;
+  width: 20px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  touch-action: auto;
+  user-select: auto;
+}

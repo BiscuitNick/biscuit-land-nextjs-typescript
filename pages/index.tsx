@@ -1,7 +1,7 @@
 import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import Biscuit from "../src/components/Biscuit";
 import { applyDefaults } from "../src/lib/defaults";
-import { useSetRecoilState } from "recoil";
+import { useEffect, useState } from "react";
 
 interface Props {
   contentIDs: string[];
@@ -10,10 +10,19 @@ interface Props {
 
 const BiscuitIndex: NextPage<Props> = (props) => {
   const { contentIDs, contentObject } = props;
+  const [isReady, setReady] = useState(false);
+
+  useEffect(() => {
+    setReady(true);
+  }, []);
 
   console.log(props);
 
-  return <Biscuit buildParams={{ contentIDs, contentObject }} />;
+  return isReady ? (
+    <Biscuit buildParams={{ contentIDs, contentObject }} />
+  ) : (
+    <div>Waiting for Client...</div>
+  );
 };
 
 export default BiscuitIndex;
@@ -139,6 +148,7 @@ export const getStaticProps: GetStaticProps = () => {
         image_0: {
           props: {
             rotation: 0,
+            src: "https://res.cloudinary.com/drk1nv578/image/upload/t_optimized/v1612050978/biscuitland/biscuitnoshadow_e49tg3.png",
           },
           relatives: {
             r_x: 0.5,
@@ -208,6 +218,7 @@ export const getStaticProps: GetStaticProps = () => {
       props: {
         rotation: 0,
         draggable: true,
+        src: "https://res.cloudinary.com/drk1nv578/image/upload/t_optimized/v1612050978/biscuitland/biscuitnoshadow_e49tg3.png",
       },
       relatives: {
         r_x: 0.5,

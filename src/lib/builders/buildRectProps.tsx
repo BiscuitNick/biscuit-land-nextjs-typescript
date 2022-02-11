@@ -7,6 +7,8 @@ export interface rectBuild {
     stroke?: string;
     draggable?: boolean;
     cornerRadius?: number;
+    strokeEnabled?: boolean;
+    fillEnabled?: boolean;
   };
   absolutes: {
     x?: number;
@@ -31,14 +33,26 @@ const buildRectProps = (params: rectBuild) => {
   const rectRelatives = { ...rectDefaults.relatives, ...relatives };
 
   const { width, height } = absolutes;
-  const { r_x, r_y, r_width, r_height } = rectRelatives;
+  const { r_x, r_y, r_width, r_height, r_strokeWidth } = rectRelatives;
 
   const x = r_x * width;
   const y = r_y * height;
   const w = r_width * width;
   const h = r_height * height;
 
-  let box = { x, y, width: w, height: h, offsetX: w / 2, offsetY: h / 2 };
+  const strokeWidth = (r_strokeWidth * Math.min(w, h)) / 2;
+  const adjustedWidth = w - strokeWidth;
+  const adjustedHeight = h - strokeWidth;
+
+  let box = {
+    x,
+    y,
+    width: adjustedWidth,
+    height: adjustedHeight,
+    offsetX: adjustedWidth / 2,
+    offsetY: adjustedHeight / 2,
+    strokeWidth,
+  };
 
   return { ...rectProps, ...box };
 };

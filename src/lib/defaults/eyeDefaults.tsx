@@ -16,12 +16,19 @@ const eyeDefaults = {
     outerStroke: "#ffffff",
     //Booleans
     disableClip: false,
+
+    innerStrokeEnabled: true,
+    innerFillEnabled: true,
+    outerStrokeEnabled: true,
+    outerFillEnabled: true,
   },
   relatives: {
     r_outerSize: 0.05,
     r_outer2inner: 0.5,
     r_x: 0.5,
     r_y: 0.5,
+    r_innerStrokeWidth: 0.1,
+    r_outerStrokeWidth: 0.1,
   },
 };
 

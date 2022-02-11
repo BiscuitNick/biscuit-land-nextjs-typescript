@@ -2,8 +2,8 @@ import { useEffect, useRef } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { contentObjectAtom, selectedContentIDAtom } from "../state/atoms";
 
-import { Group, Text, Circle, Ellipse, Rect, Wedge } from "react-konva";
-import { Board, Eye, MyRect, MyImage } from "@biscuitnick/react-biscuit/";
+import { Group } from "react-konva";
+import { Board, Eye, MyRect, MyImage } from "@biscuitnick/biscuit-library";
 import {
   buildEyeProps,
   buildRectProps,
@@ -26,6 +26,9 @@ export interface biscuitParams {
   };
 }
 
+const Konva = require("konva");
+Konva.showWarnings = false;
+
 const Biscuit = (props: biscuitParams) => {
   const { buildParams: initParams } = props;
 
@@ -37,6 +40,13 @@ const Biscuit = (props: biscuitParams) => {
 
   const dragItem: any = useRef(null);
 
+  const squareWH = Math.min(width, height);
+
+  const centerBox = {
+    x: (width - squareWH) / 2,
+    y: (height - squareWH) / 2,
+  };
+
   useEffect(() => {
     setObject(initParams);
   }, [initParams]);
@@ -47,21 +57,33 @@ const Biscuit = (props: biscuitParams) => {
     console.log(content);
   };
 
-  const handleDrag = (id: string, e) => {
+  const handleDrag = (id: string, e: { target: { attrs: any } }) => {
+    const { x, y } = e.target.attrs;
+
+    setSelectedID(id);
+
     if (dragItem.current != id) {
       dragItem.current = id;
-      console.log(id, "drag start");
     } else {
-      console.log(id, "drag finished");
-      console.log(e.target.attrs);
       dragItem.current = "";
-    }
-  };
 
-  const squareWH = Math.min(width, height);
-  const centerBox = {
-    x: (width - squareWH) / 2,
-    y: (height - squareWH) / 2,
+      const contentItem = buildParams.contentObject[id];
+      const { relatives } = contentItem;
+
+      let newR_X = x / squareWH;
+      let newR_Y = y / squareWH;
+
+      setObject({
+        ...buildParams,
+        contentObject: {
+          ...buildParams.contentObject,
+          [id]: {
+            ...contentItem,
+            relatives: { ...relatives, r_x: newR_X, r_y: newR_Y },
+          },
+        },
+      });
+    }
   };
 
   const BiscuitContent = (
@@ -96,7 +118,7 @@ const Biscuit = (props: biscuitParams) => {
               <Eye
                 key={id}
                 {...eyeprops}
-                handleDrag={(e) => handleDrag(id, e)}
+                handleDrag={(e: any) => handleDrag(id, e)}
               />
             );
           case "rect":
@@ -107,7 +129,7 @@ const Biscuit = (props: biscuitParams) => {
 
             return (
               <MyRect
-                handleDrag={(e) => handleDrag(id, e)}
+                handleDrag={(e: any) => handleDrag(id, e)}
                 key={id}
                 {...rectProps}
                 handleClick={() => handleClick(id)}
@@ -121,12 +143,10 @@ const Biscuit = (props: biscuitParams) => {
 
             return (
               <MyImage
-                handleDrag={(e) => handleDrag(id, e)}
+                handleDrag={(e: any) => handleDrag(id, e)}
                 key={id}
+                id={id}
                 {...imageProps}
-                src={
-                  "https://res.cloudinary.com/drk1nv578/image/upload/t_optimized/v1612050978/biscuitland/biscuitnoshadow_e49tg3.png"
-                }
                 handleClick={() => handleClick(id)}
               />
             );

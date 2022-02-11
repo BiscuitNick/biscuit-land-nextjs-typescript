@@ -7,12 +7,19 @@ const imageDefaults = {
     keepAspectRatio: true, //
     verticalAlign: "middle",
     horizontalAlign: "center",
+
+    fillEnabled: false,
+    strokeEnabled: false,
+    fill: "#ffffff",
+    stroke: "#000000",
+    src: "",
   },
   relatives: {
     r_x: 0.5,
     r_y: 0.5,
     r_width: 1,
     r_height: 1,
+    r_strokeWidth: 0.02,
   },
 };
 
