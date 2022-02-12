@@ -1,4 +1,4 @@
-import { TextInput } from "@biscuitnick/biscuit-library";
+import { TextInput } from "@biscuitnick/biscuit-library"; //"../inputs"; //
 
 interface textSetterProps {
   selectedContentID: string;

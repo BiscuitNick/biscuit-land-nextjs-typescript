@@ -51,63 +51,63 @@ export const getServerSideProps: GetServerSideProps = async (context: {
     },
   };
 
-  const ids = Object.keys(query).filter((id) => contentIDs.includes(id));
+  // const ids = Object.keys(query).filter((id) => contentIDs.includes(id));
 
-  const propKeys = [
-    "w2h",
-    "outerShape",
-    "outerFill",
-    "outerStroke",
-    "outerRotation",
-    "innerShape",
-    "innerFill",
-    "innerStroke",
-    "innerRotation",
-    "sensitivity",
-    "movementFactor",
-    "disableClick",
-  ];
-  const relativeKeys = [
-    "r_x",
-    "r_y",
-    "r_outerSize",
-    "r_outer2inner",
-    "r_width",
-    "r_height",
-  ];
+  // const propKeys = [
+  //   "w2h",
+  //   "outerShape",
+  //   "outerFill",
+  //   "outerStroke",
+  //   "outerRotation",
+  //   "innerShape",
+  //   "innerFill",
+  //   "innerStroke",
+  //   "innerRotation",
+  //   "sensitivity",
+  //   "movementFactor",
+  //   "disableClick",
+  // ];
+  // const relativeKeys = [
+  //   "r_x",
+  //   "r_y",
+  //   "r_outerSize",
+  //   "r_outer2inner",
+  //   "r_width",
+  //   "r_height",
+  // ];
 
-  // validate keys...
+  // // validate keys...
 
-  const values = ids.map((id) => {
-    const datapairs = query[id].split(",");
+  // const values = ids.map((id) => {
+  //   const datapairs = query[id].split(",");
 
-    const relatives: any = {};
-    const props: any = {};
-    for (let i = 0; i < datapairs.length; i++) {
-      let key = datapairs[i]?.split("-")[0];
-      let val = datapairs[i]?.split("-")[1];
+  //   const relatives: any = {};
+  //   const props: any = {};
+  //   for (let i = 0; i < datapairs.length; i++) {
+  //     let key = datapairs[i]?.split("-")[0];
+  //     let val = datapairs[i]?.split("-")[1];
 
-      if (key && val) {
-        if (relativeKeys.includes(key) && !isNaN(Number(val))) {
-          relatives[key] = Number(val);
-        } else if (propKeys.includes(key) && val) {
-          props[key] = val;
-        }
-      }
-    }
-    let ogRelatives = contentObject[id as keyof typeof contentObject].relatives;
-    let ogProps = contentObject[id as keyof typeof contentObject].props;
+  //     if (key && val) {
+  //       if (relativeKeys.includes(key) && !isNaN(Number(val))) {
+  //         relatives[key] = Number(val);
+  //       } else if (propKeys.includes(key) && val) {
+  //         props[key] = val;
+  //       }
+  //     }
+  //   }
+  //   let ogRelatives = contentObject[id as keyof typeof contentObject].relatives;
+  //   let ogProps = contentObject[id as keyof typeof contentObject].props;
 
-    contentObject[id as keyof typeof contentObject].relatives = {
-      ...ogRelatives,
-      ...relatives,
-    };
+  //   contentObject[id as keyof typeof contentObject].relatives = {
+  //     ...ogRelatives,
+  //     ...relatives,
+  //   };
 
-    contentObject[id as keyof typeof contentObject].props = {
-      ...ogProps,
-      ...props,
-    };
-  });
+  //   contentObject[id as keyof typeof contentObject].props = {
+  //     ...ogProps,
+  //     ...props,
+  //   };
+  // });
 
   const buildParams = {
     contentIDs,

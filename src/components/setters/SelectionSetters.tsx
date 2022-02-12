@@ -1,4 +1,4 @@
-import { SelectAttribute } from "@biscuitnick/biscuit-library";
+import { SelectAttribute } from "@biscuitnick/biscuit-library"; //"../inputs"; //
 
 interface selectAttributeProps {
   selectedContentID: string;
