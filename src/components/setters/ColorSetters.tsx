@@ -1,5 +1,6 @@
-import { ColorPickerSwitch } from "@biscuitnick/biscuit-library";
+import React from "react";
 
+import { ColorPickerSwitch } from "../inputs";
 interface ColorSettersProps {
   selectedContentID: string;
   contentObject: {

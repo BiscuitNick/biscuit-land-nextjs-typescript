@@ -1,7 +1,7 @@
 import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
-import Biscuit from "../src/components/Biscuit";
 import { applyDefaults } from "../src/lib/defaults";
 import { useEffect, useState } from "react";
+import { BiscuitBoard } from "../src/components/Konva";
 
 interface Props {
   contentIDs: string[];
@@ -16,10 +16,10 @@ const BiscuitIndex: NextPage<Props> = (props) => {
     setReady(true);
   }, []);
 
-  console.log(props);
+  // console.log(props);
 
   return isReady ? (
-    <Biscuit buildParams={{ contentIDs, contentObject }} />
+    <BiscuitBoard buildParams={{ contentIDs, contentObject }} />
   ) : (
     <div>Waiting for Client...</div>
   );

@@ -126,7 +126,7 @@ input:checked + .switchspan:before {
 
 .sliderInput::-webkit-slider-thumb {
   -webkit-appearance: none;
-  background: limegreen;
+  background: orange;
   height: 60px;
   cursor: pointer;
   color: #ffffff;

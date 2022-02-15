@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getStageData } from "@biscuitnick/react-biscuit";
+import getStageData from "../utils/getStageData";
 import useInterval from "./useInterval";
 
 export interface StagePositions {
@@ -7,13 +7,8 @@ export interface StagePositions {
   delay?: number;
 }
 
-export interface XYs {
-  x: number;
-  y: number;
-}
-
 export const useStagePositions = ({ canvasRef, delay }: StagePositions) => {
-  const [xy, set] = useState<XYs>({ x: 0, y: 0 });
+  const [xy, set] = useState({ x: 0, y: 0 });
 
   useInterval(() => {
     const stageData = getStageData(canvasRef);

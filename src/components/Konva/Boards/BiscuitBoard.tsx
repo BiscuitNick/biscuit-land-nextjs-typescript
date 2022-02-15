@@ -1,19 +1,20 @@
 import { useEffect, useRef } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { contentObjectAtom, selectedContentIDAtom } from "../state/atoms";
+import { contentObjectAtom, selectedContentIDAtom } from "../../../state/atoms";
 
 import { Group } from "react-konva";
-import { Board, Eye, MyRect, MyImage } from "@biscuitnick/biscuit-library";
+import { Board, Eye, MyRect, MyImage } from ".."; // "@biscuitnick/biscuit-library";
 import {
   buildEyeProps,
   buildRectProps,
   buildImageProps,
-} from "../lib/builders";
+} from "../../../lib/builders";
 
-import useWindowSize from "../hooks/useWindowSize";
-import { useStagePositions } from "../hooks/useStagePositions";
+import useWindowSize from "../../../hooks/useWindowSize";
+import { useStagePositions } from "../../../hooks/useStagePositions";
 
-import Editor from "./Editor";
+import Editor from "../../Editor";
+import { getInnerPosition } from "../../../utils";
 
 export interface biscuitParams {
   width?: number;
@@ -29,16 +30,16 @@ export interface biscuitParams {
 const Konva = require("konva");
 Konva.showWarnings = false;
 
-const Biscuit = (props: biscuitParams) => {
+const BiscuitBoard = (props: biscuitParams) => {
   const { buildParams: initParams } = props;
 
   const { width, height } = useWindowSize();
   const canvasRef = useRef<any>(null);
+  const dragItem = useRef<any>(null);
+
   const focalPoint = useStagePositions({ canvasRef });
   const [buildParams, setObject] = useRecoilState(contentObjectAtom);
   const setSelectedID = useSetRecoilState(selectedContentIDAtom);
-
-  const dragItem: any = useRef(null);
 
   const squareWH = Math.min(width, height);
 
@@ -103,22 +104,26 @@ const Biscuit = (props: biscuitParams) => {
 
         switch (contentType) {
           case "eye":
-            let eyeprops = {
-              ...buildEyeProps({
-                ...data,
-                absolutes, //{ width: squareWH, height: squareWH },
-              }),
+            let eyeprops = buildEyeProps({
+              ...data,
+              absolutes, //{ width: squareWH, height: squareWH },
+            });
+
+            let innerXY = getInnerPosition({
+              ...eyeprops,
               focalPoint: {
                 x: focalPoint.x - centerBox.x,
                 y: focalPoint.y - centerBox.y,
               },
-              handleClick: () => handleClick(id),
-            };
+            });
+
             return (
               <Eye
                 key={id}
                 {...eyeprops}
+                innerXY={innerXY}
                 handleDrag={(e: any) => handleDrag(id, e)}
+                handleClick={() => handleClick(id)}
               />
             );
           case "rect":
@@ -173,58 +178,4 @@ const Biscuit = (props: biscuitParams) => {
   );
 };
 
-export default Biscuit;
-
-// {
-//   /* <Circle
-//   fill={"#00ff00"}
-//   width={60}
-//   height={60}
-//   x={width / 2 - 60}
-//   y={height / 2}
-// /> */
-// }
-// {
-//   /* <Text text={"hello"} /> */
-// }
-// {
-//   /* <Wedge
-//   x={width / 2}
-//   y={height / 2}
-//   width={50}
-//   height={50}
-//   radius={30}
-//   fill={"red"}
-//   angle={350}
-//   rotation={0}
-// /> */
-// }
-// {
-//   /* <Ellipse
-//   radiusX={100 / 2}
-//   radiusY={200 / 2}
-//   x={width / 2}
-//   y={height / 2}
-//   fill={"#fff000"}
-// />
-// <Rect
-//   width={100 - 5}
-//   height={200}
-//   x={width / 2 - 100}
-//   y={height / 2 - 200}
-//   fill={"#00ff00"}
-//   draggable={true}
-// /> */
-// }
-
-// {
-//   /* <MyImage
-//   x={0}
-//   y={0}
-//   width={332}
-//   height={280}
-//   src={
-//     "https://res.cloudinary.com/drk1nv578/image/upload/t_optimized/v1612050978/biscuitland/biscuitnoshadow_e49tg3.png"
-//   }
-// /> */
-// }
+export default BiscuitBoard;

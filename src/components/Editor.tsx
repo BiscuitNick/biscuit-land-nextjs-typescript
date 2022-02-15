@@ -7,7 +7,7 @@ import {
   ToggleSetters,
   ColorSetters,
   NumberSetters,
-} from "@biscuitnick/biscuit-library";
+} from "./setters"; //"@biscuitnick/biscuit-library";
 
 // import {} from "@biscuitnick/biscuit-library";
 

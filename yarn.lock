@@ -25,24 +25,12 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@biscuitnick/biscuit-library@^1.1.8":
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/@biscuitnick/biscuit-library/-/biscuit-library-1.1.8.tgz#bd28f69a67a05b9e39fab16ef54a9b631279d48d"
-  integrity sha512-EthLZqgOQaSfYksu4/ZJW+mH2PfOcAVNdYgSFXHg/lByT7dI7xQdqSeAdHGuwSC8yLMUNg6eRfqEkLs0lqRAYg==
+"@biscuitnick/biscuit-library@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@biscuitnick/biscuit-library/-/biscuit-library-1.2.0.tgz#fde708d9c21bc8c5008cb255a58b2173d2e4b632"
+  integrity sha512-J1Q/2zKWiPN0Nx/qaAcs4qCi13d6V+CxjT/yzkjGzZlm2JRnGj38Gu7X09XWncc4xiAV3EvCLVU+MBuAYHUDpw==
   dependencies:
     webpack "^5.68.0"
-
-"@biscuitnick/dice@^0.1.0":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@biscuitnick/dice/-/dice-0.1.1.tgz#8e0230eb5862a2b093390ca049a016e24bdadb4c"
-  integrity sha512-fKz2dYEaLQe9yulFiCx+mIyhEuDpB/+jvz98e/WFcNucYrUevXBkSeQ/xvjRcBU6nw4clg9HuNwx/o0pNlvTlQ==
-  dependencies:
-    "@react-spring/web" "^9.4.2"
-
-"@biscuitnick/react-biscuit@^0.2.72":
-  version "0.2.72"
-  resolved "https://registry.yarnpkg.com/@biscuitnick/react-biscuit/-/react-biscuit-0.2.72.tgz#9115ba1b1afb80fa3000920fe10f0dfa0ad6e5a0"
-  integrity sha512-4lAeLb6yoMkG9je1sqACFJu10V7/KqoW40Mh9DVdBkPT+0GMtZkEx0MIRBtCSAtNYL6QiIAV5yEsWm/z0pm6Aw==
 
 "@eslint/eslintrc@^1.0.5":
   version "1.0.5"
@@ -206,16 +194,6 @@
   version "9.4.2"
   resolved "https://registry.yarnpkg.com/@react-spring/types/-/types-9.4.2.tgz#f0518f6d23a0b0f699a71976483323ac84bc4ace"
   integrity sha512-GGiIscTM+CEUNV52anj3g5FqAZKL2+eRKtvBOAlC99qGBbvJ3qTLImrUR/I3lXY7PRuLgzI6kh34quA1oUxWYQ==
-
-"@react-spring/web@^9.4.2":
-  version "9.4.2"
-  resolved "https://registry.yarnpkg.com/@react-spring/web/-/web-9.4.2.tgz#ea8bb224c236d10097da463ea9e950f0939b7a5f"
-  integrity sha512-sWfA9NkVuvVOpjSlMkD2zcF6X3i8NSHTeH/uHCGKsN3mYqgkhvAF+E8GASO/H4KKGNhbRvgCZiwJXOtOGyUg6A==
-  dependencies:
-    "@react-spring/animated" "~9.4.0"
-    "@react-spring/core" "~9.4.0"
-    "@react-spring/shared" "~9.4.0"
-    "@react-spring/types" "~9.4.0"
 
 "@rushstack/eslint-patch@^1.0.8":
   version "1.1.0"

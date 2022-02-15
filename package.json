@@ -8,9 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@biscuitnick/biscuit-library": "^1.1.8",
-    "@biscuitnick/dice": "^0.1.0",
-    "@biscuitnick/react-biscuit": "^0.2.72",
+    "@biscuitnick/biscuit-library": "^1.2.0",
     "@react-spring/konva": "^9.4.2",
     "konva": "^7.2.5",
     "next": "12.0.10",

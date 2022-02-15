@@ -1,4 +1,5 @@
-import "./ColorPickers.css";
+import React from "react";
+// import "./ColorPickers.css";
 
 export interface ColorPickerProps {
   id: string;

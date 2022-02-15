@@ -1,5 +1,6 @@
-import { NumberInput } from "@biscuitnick/biscuit-library"; //"../inputs"; //
+import React from "react";
 
+import { NumberInput } from "../inputs";
 interface NumberSetterProps {
   selectedContentID: string;
   contentObject: {
@@ -37,12 +38,10 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     r_outerSize,
     r_outer2inner,
     r_strokeWidth,
-    r_innerStrokeWidth,
-    r_outerStrokeWidth,
   } = relatives;
 
   const handlePropChange = (value: number, id: string) => {
-    console.log(selectedContent, value, id);
+    // console.log(selectedContent, value, id);
 
     updateContent({
       ...contentObject,
@@ -57,7 +56,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
   };
 
   const handleRelativeChange = (value: number, id: string) => {
-    console.log(selectedContent, value, id);
+    // console.log(selectedContent, value, id);
 
     updateContent({
       ...contentObject,
@@ -141,36 +140,6 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
           let scaledValue = e.target.value;
           let val = scaledValue / 100;
           handleRelativeChange(val, "r_strokeWidth");
-        }}
-        min={0}
-        max={100}
-        step={1}
-      />
-    ),
-    r_innerStrokeWidth: (
-      <NumberInput
-        id="r_innerStrokeWidth"
-        label="r_innerStrokeWidth"
-        value={Math.round(r_strokeWidth * 100)}
-        onChange={(e: { target: { value: number } }) => {
-          let scaledValue = e.target.value;
-          let val = scaledValue / 100;
-          handleRelativeChange(val, "r_innerStrokeWidth");
-        }}
-        min={0}
-        max={100}
-        step={1}
-      />
-    ),
-    r_outerStrokeWidth: (
-      <NumberInput
-        id="r_outerStrokeWidth"
-        label="r_outerStrokeWidth"
-        value={Math.round(r_strokeWidth * 100)}
-        onChange={(e: { target: { value: number } }) => {
-          let scaledValue = e.target.value;
-          let val = scaledValue / 100;
-          handleRelativeChange(val, "r_outerStrokeWidth");
         }}
         min={0}
         max={100}

@@ -1,4 +1,6 @@
-import { TextInput } from "@biscuitnick/biscuit-library"; //"../inputs"; //
+import React from "react";
+
+import { TextInput } from "../inputs";
 
 interface textSetterProps {
   selectedContentID: string;

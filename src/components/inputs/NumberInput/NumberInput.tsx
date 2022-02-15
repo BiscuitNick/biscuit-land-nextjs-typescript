@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+// import "./NumberInput.css";
 
 export interface NumberInputProps {
   id: string;
@@ -18,7 +19,9 @@ export interface NumberInputProps {
 }
 
 const NumberInput = (props: NumberInputProps) => {
-  const { id, label, value, onChange, min, max, step } = props;
+  const { id, label, value, onChange: handleChange, min, max, step } = props;
+
+  const inputRef = useRef(value);
 
   return (
     <div className={"inputContainer2Wide"}>
@@ -37,7 +40,7 @@ const NumberInput = (props: NumberInputProps) => {
         max={max ? max : 100}
         step={step ? step : 1}
         value={value || 0}
-        onChange={onChange}
+        onChange={handleChange}
       />
     </div>
   );

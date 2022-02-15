@@ -1,5 +1,6 @@
-import { ToggleSwitch } from "@biscuitnick/biscuit-library"; // "../inputs"; //
+import React from "react";
 
+import { ToggleSwitch } from "../inputs";
 interface toggleSwitchesProps {
   selectedContentID: string;
   contentObject: {
@@ -53,6 +54,7 @@ const ToggleSetters = (toggleProps: toggleSwitchesProps) => {
     fillEnabled: (
       <ToggleSwitch
         id={"fillEnabled"}
+        label={"fillEnabled"}
         value={fillEnabled}
         onChange={handleChange}
       />
@@ -60,6 +62,7 @@ const ToggleSetters = (toggleProps: toggleSwitchesProps) => {
     strokeEnabled: (
       <ToggleSwitch
         id={"strokeEnabled"}
+        label={"strokeEnabled"}
         value={strokeEnabled}
         onChange={handleChange}
       />

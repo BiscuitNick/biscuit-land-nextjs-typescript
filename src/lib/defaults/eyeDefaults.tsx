@@ -1,6 +1,6 @@
 const eyeDefaults = {
   props: {
-    focalPoint: { x: 0, y: 0 },
+    innerXY: { x: 0, y: 0 },
 
     innerRotation: 0,
     outerRotation: 0,

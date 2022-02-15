@@ -1,8 +1,9 @@
 import React from "react";
+// import "./TextInput.css";
 
 export interface TextInputProps {
   id: string;
-  label: string;
+  label?: string;
 
   value: string;
   onChange: any;
