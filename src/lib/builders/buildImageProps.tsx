@@ -52,6 +52,7 @@ const buildImageProps = (params: imageBuild) => {
     offsetX: adjustedWidth / 2,
     offsetY: adjustedHeight / 2,
     strokeWidth,
+    box: absolutes,
   };
 
   return { ...imageProps, ...box };

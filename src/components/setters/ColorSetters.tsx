@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ColorPickerSwitch } from "../inputs";
+import { ColorPickerSwitch } from "../Inputs";
 interface ColorSettersProps {
   selectedContentID: string;
   contentObject: {
@@ -77,6 +77,7 @@ const ColorSetters = (colorProps: ColorSettersProps) => {
     fill: (
       <ColorPickerSwitch
         id={"fill"}
+        key={"fill"}
         label={"Fill"}
         value={fill}
         onChange={handleChange}
@@ -88,6 +89,7 @@ const ColorSetters = (colorProps: ColorSettersProps) => {
     stroke: (
       <ColorPickerSwitch
         id={"stroke"}
+        key={"stroke"}
         label={"Stroke"}
         value={stroke}
         onChange={handleChange}
@@ -99,6 +101,7 @@ const ColorSetters = (colorProps: ColorSettersProps) => {
     innerFill: (
       <ColorPickerSwitch
         id={"innerFill"}
+        key={"innerFill"}
         label={"InnerFill"}
         value={innerFill}
         onChange={handleChange}
@@ -110,6 +113,7 @@ const ColorSetters = (colorProps: ColorSettersProps) => {
     innerStroke: (
       <ColorPickerSwitch
         id={"innerStroke"}
+        key={"innerStroke"}
         label={"InnerStroke"}
         value={innerStroke}
         onChange={handleChange}
@@ -121,6 +125,7 @@ const ColorSetters = (colorProps: ColorSettersProps) => {
     outerFill: (
       <ColorPickerSwitch
         id={"outerFill"}
+        key={"outerFill"}
         label={"OuterFill"}
         value={outerFill}
         onChange={handleChange}
@@ -132,6 +137,7 @@ const ColorSetters = (colorProps: ColorSettersProps) => {
     outerStroke: (
       <ColorPickerSwitch
         id={"outerStroke"}
+        key={"outerStroke"}
         label={"OuterStroke"}
         value={outerStroke}
         onChange={handleChange}
@@ -144,7 +150,7 @@ const ColorSetters = (colorProps: ColorSettersProps) => {
 
   return (
     <>
-      {attributes.map((attr: string) =>
+      {attributes.map((attr: string, i) =>
         Object.keys(ColorPickerSwitches).includes(attr)
           ? ColorPickerSwitches[attr]
           : null

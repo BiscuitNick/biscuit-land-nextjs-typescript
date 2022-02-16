@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TextInput } from "../inputs";
+import { TextInput } from "../Inputs";
 
 interface textSetterProps {
   selectedContentID: string;
@@ -23,7 +23,7 @@ const TextSetters = (textProps: textSetterProps) => {
 
   const selectedContent = contentObject.contentObject[selectedContentID];
   const { props } = selectedContent;
-  const { src } = props;
+  const { src, textContent } = props;
 
   const handleChange = (e: { target: { id: string; value: string } }) => {
     const id = e.target.id;
@@ -47,9 +47,19 @@ const TextSetters = (textProps: textSetterProps) => {
     src: (
       <TextInput
         id="src"
+        key="src"
         label="Image url"
         onChange={handleChange}
         value={src}
+      />
+    ),
+    textContent: (
+      <TextInput
+        id="textContent"
+        key="textContent"
+        label="textContent"
+        onChange={handleChange}
+        value={textContent}
       />
     ),
   };

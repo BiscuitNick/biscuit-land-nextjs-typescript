@@ -2,19 +2,9 @@ import { useEffect, useRef } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { contentObjectAtom, selectedContentIDAtom } from "../../../state/atoms";
 
-import { Group } from "react-konva";
-import { Board, Eye, MyRect, MyImage } from ".."; // "@biscuitnick/biscuit-library";
-import {
-  buildEyeProps,
-  buildRectProps,
-  buildImageProps,
-} from "../../../lib/builders";
+import { useWindowSize } from "../../../hooks/";
 
-import useWindowSize from "../../../hooks/useWindowSize";
-import { useStagePositions } from "../../../hooks/useStagePositions";
-
-import Editor from "../../Editor";
-import { getInnerPosition } from "../../../utils";
+import { Board, Biscuit } from "../..";
 
 export interface biscuitParams {
   width?: number;
@@ -37,29 +27,25 @@ const BiscuitBoard = (props: biscuitParams) => {
   const canvasRef = useRef<any>(null);
   const dragItem = useRef<any>(null);
 
-  const focalPoint = useStagePositions({ canvasRef });
   const [buildParams, setObject] = useRecoilState(contentObjectAtom);
   const setSelectedID = useSetRecoilState(selectedContentIDAtom);
 
   const squareWH = Math.min(width, height);
 
-  const centerBox = {
-    x: (width - squareWH) / 2,
-    y: (height - squareWH) / 2,
-  };
-
   useEffect(() => {
     setObject(initParams);
   }, [initParams]);
 
-  const handleClick = (id: string) => {
-    setSelectedID(id);
-    let content = buildParams.contentObject[id];
-    console.log(content);
+  const handleClick = (e: { target: { attrs: any } }) => {
+    const attrs = e.target.attrs;
+    const { id } = attrs;
+
+    setSelectedID(id || "");
   };
 
-  const handleDrag = (id: string, e: { target: { attrs: any } }) => {
-    const { x, y } = e.target.attrs;
+  const handleDrag = (e: { target: { attrs: any } }) => {
+    const attrs = e.target.attrs;
+    const { id, x, y, box } = attrs;
 
     setSelectedID(id);
 
@@ -71,8 +57,8 @@ const BiscuitBoard = (props: biscuitParams) => {
       const contentItem = buildParams.contentObject[id];
       const { relatives } = contentItem;
 
-      let newR_X = x / squareWH;
-      let newR_Y = y / squareWH;
+      let newR_X = x / box.width; //squareWH;
+      let newR_Y = y / box.height; //squareWH;
 
       setObject({
         ...buildParams,
@@ -87,93 +73,36 @@ const BiscuitBoard = (props: biscuitParams) => {
     }
   };
 
-  const BiscuitContent = (
-    params: {
-      contentIDs: string[];
-      contentObject: { [key: string]: { props: object; relatives: object } };
-    },
-    absolutes: { width: number; height: number }
-  ) => {
-    if (!params) return null;
-    else {
-      if (!params.contentIDs) return null;
-      const { contentIDs, contentObject } = params;
-      const content = contentIDs.map((id) => {
-        let contentType = id?.split("_")[0];
-        const data = contentObject[id];
-
-        switch (contentType) {
-          case "eye":
-            let eyeprops = buildEyeProps({
-              ...data,
-              absolutes, //{ width: squareWH, height: squareWH },
-            });
-
-            let innerXY = getInnerPosition({
-              ...eyeprops,
-              focalPoint: {
-                x: focalPoint.x - centerBox.x,
-                y: focalPoint.y - centerBox.y,
-              },
-            });
-
-            return (
-              <Eye
-                key={id}
-                {...eyeprops}
-                innerXY={innerXY}
-                handleDrag={(e: any) => handleDrag(id, e)}
-                handleClick={() => handleClick(id)}
-              />
-            );
-          case "rect":
-            let rectProps = buildRectProps({
-              ...data,
-              absolutes,
-            });
-
-            return (
-              <MyRect
-                handleDrag={(e: any) => handleDrag(id, e)}
-                key={id}
-                {...rectProps}
-                handleClick={() => handleClick(id)}
-              />
-            );
-          case "image":
-            let imageProps = buildImageProps({
-              ...data,
-              absolutes,
-            });
-
-            return (
-              <MyImage
-                handleDrag={(e: any) => handleDrag(id, e)}
-                key={id}
-                id={id}
-                {...imageProps}
-                handleClick={() => handleClick(id)}
-              />
-            );
-        }
-      });
-      return content;
-    }
-  };
-
-  const myContent = BiscuitContent(buildParams, {
-    width: squareWH,
-    height: squareWH,
-  });
-
   return (
     <>
       <Board width={width} height={height} canvasRef={canvasRef}>
-        <Group {...centerBox}>{myContent}</Group>
+        {/* <Group {...centerBox}>{myContent}</Group> */}
+        <Biscuit
+          box={{ width: width, height: height }}
+          contentObject={buildParams.contentObject}
+          contentIDs={buildParams.contentIDs || []}
+          canvasRef={canvasRef}
+          handleClick={handleClick}
+          handleDrag={handleDrag}
+          key={"b1"}
+          id={"b1"}
+        />
+        {/* <Biscuit
+          box={{
+            width: width / 2,
+            height: height / 2,
+            x: width / 2,
+            y: height / 2,
+          }}
+          contentObject={buildParams.contentObject}
+          contentIDs={buildParams.contentIDs || []}
+          canvasRef={canvasRef}
+          handleClick={handleClick}
+          handleDrag={handleDrag}
+          key={"b2"}
+          id={"b2"}
+        /> */}
       </Board>
-      <div style={{ position: "absolute", left: 0, top: 0 }}>
-        <Editor />
-      </div>
     </>
   );
 };

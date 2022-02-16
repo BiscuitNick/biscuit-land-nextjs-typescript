@@ -1,1 +1,1 @@
-export { default as MyImage } from "./MyImage";
+export { default as AnimatedImage } from "./AnimatedImage";

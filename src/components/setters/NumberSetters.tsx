@@ -1,6 +1,6 @@
 import React from "react";
 
-import { NumberInput } from "../inputs";
+import { NumberInput } from "../Inputs";
 interface NumberSetterProps {
   selectedContentID: string;
   contentObject: {
@@ -29,6 +29,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     movementFactor,
     innerRotation,
     outerRotation,
+    strokeWidthFactor,
   } = props;
   const {
     r_x,
@@ -38,6 +39,8 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     r_outerSize,
     r_outer2inner,
     r_strokeWidth,
+    r_innerStrokeWidth,
+    r_outerStrokeWidth,
   } = relatives;
 
   const handlePropChange = (value: number, id: string) => {
@@ -74,6 +77,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     r_x: (
       <NumberInput
         id="r_x"
+        key={"r_x"}
         label="X-Axis"
         value={Math.round((r_x - 0.5) * 100)}
         onChange={(e: { target: { value: number } }) => {
@@ -89,6 +93,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     r_y: (
       <NumberInput
         id="r_y"
+        key={"r_y"}
         label="Y-Axis"
         value={Math.round((r_y - 0.5) * 100)}
         onChange={(e: { target: { value: number } }) => {
@@ -104,6 +109,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     r_width: (
       <NumberInput
         id="r_width"
+        key={"r_width"}
         label="Width"
         value={Math.round(r_width * 100)}
         onChange={(e: { target: { value: number } }) => {
@@ -119,6 +125,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     r_height: (
       <NumberInput
         id="r_height"
+        key={"r_height"}
         label="Height"
         value={Math.round(r_height * 100)}
         onChange={(e: { target: { value: number } }) => {
@@ -134,6 +141,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     r_strokeWidth: (
       <NumberInput
         id="r_strokeWidth"
+        key={"r_strokeWidth"}
         label="StrokeWidth"
         value={Math.round(r_strokeWidth * 100)}
         onChange={(e: { target: { value: number } }) => {
@@ -146,9 +154,58 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
         step={1}
       />
     ),
+    r_innerStrokeWidth: (
+      <NumberInput
+        id="r_innerStrokeWidth"
+        key={"r_innerStrokeWidth"}
+        label="r_innerStrokeWidth"
+        value={Math.round(r_innerStrokeWidth * 100)}
+        onChange={(e: { target: { value: number } }) => {
+          let scaledValue = e.target.value;
+          let val = scaledValue / 100;
+          handleRelativeChange(val, "r_innerStrokeWidth");
+        }}
+        min={0}
+        max={100}
+        step={1}
+      />
+    ),
+    r_outerStrokeWidth: (
+      <NumberInput
+        id="r_outerStrokeWidth"
+        key={"r_outerStrokeWidth"}
+        label="r_outerStrokeWidth"
+        value={Math.round(r_outerStrokeWidth * 100)}
+        onChange={(e: { target: { value: number } }) => {
+          let scaledValue = e.target.value;
+          let val = scaledValue / 100;
+          handleRelativeChange(val, "r_outerStrokeWidth");
+        }}
+        min={0}
+        max={100}
+        step={1}
+      />
+    ),
+    strokeWidthFactor: (
+      <NumberInput
+        id={"strokeWidthFactor"}
+        key={"textStrokeWidthFactor"}
+        label="Stroke Width"
+        value={Math.round(strokeWidthFactor * 200)}
+        onChange={(e: { target: { value: number } }) => {
+          let scaledValue = e.target.value;
+          let val = scaledValue / 200;
+          handlePropChange(val, "strokeWidthFactor");
+        }}
+        min={0}
+        max={40}
+        step={1}
+      />
+    ),
     rotation: (
       <NumberInput
         id={"rotation"}
+        key={"rotation"}
         label="Rotation"
         value={rotation}
         onChange={(e: { target: { value: number } }) =>
@@ -162,6 +219,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     w2h: (
       <NumberInput
         id={"w2h"}
+        key={"w2h"}
         label={"w2h"}
         value={w2h}
         onChange={(e: { target: { value: number } }) =>
@@ -175,6 +233,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     sensitivity: (
       <NumberInput
         id={"sensitivity"}
+        key={"sensitivity"}
         label={"Sensitivity"}
         value={sensitivity}
         onChange={(e: { target: { value: number } }) =>
@@ -188,6 +247,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     movementFactor: (
       <NumberInput
         id={"movementFactor"}
+        key={"movementFactor"}
         label={"Movement Range"}
         value={movementFactor}
         onChange={(e: { target: { value: number } }) =>
@@ -201,6 +261,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     r_outerSize: (
       <NumberInput
         id={"r_outerSize"}
+        key={"r_outerSize"}
         label={"Eye Size"}
         value={Math.round(r_outerSize * 200)}
         onChange={(e: { target: { value: number } }) => {
@@ -216,6 +277,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     r_outer2inner: (
       <NumberInput
         id={"r_outer2inner"}
+        key={"r_outer2inner"}
         label={"Inner Size"}
         value={Math.round(r_outer2inner * 100)}
         onChange={(e: { target: { value: number } }) => {
@@ -231,6 +293,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     innerRotation: (
       <NumberInput
         id={"innerRotation"}
+        key={"innerRotation"}
         label={"InnerRotation"}
         value={innerRotation}
         onChange={(e: { target: { value: number } }) =>
@@ -244,6 +307,7 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
     outerRotation: (
       <NumberInput
         id={"outerRotation"}
+        key={"outerRotation"}
         label={"OuterRotation"}
         value={outerRotation}
         onChange={(e: { target: { value: number } }) =>

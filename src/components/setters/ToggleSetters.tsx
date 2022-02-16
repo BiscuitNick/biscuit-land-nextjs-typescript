@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ToggleSwitch } from "../inputs";
+import { ToggleSwitch } from "../Inputs";
 interface toggleSwitchesProps {
   selectedContentID: string;
   contentObject: {
@@ -46,6 +46,7 @@ const ToggleSetters = (toggleProps: toggleSwitchesProps) => {
     draggable: (
       <ToggleSwitch
         id={"draggable"}
+        key={"draggable"}
         label={"draggable"}
         value={draggable}
         onChange={handleChange}
@@ -54,6 +55,7 @@ const ToggleSetters = (toggleProps: toggleSwitchesProps) => {
     fillEnabled: (
       <ToggleSwitch
         id={"fillEnabled"}
+        key={"fillEnabled"}
         label={"fillEnabled"}
         value={fillEnabled}
         onChange={handleChange}
@@ -62,6 +64,7 @@ const ToggleSetters = (toggleProps: toggleSwitchesProps) => {
     strokeEnabled: (
       <ToggleSwitch
         id={"strokeEnabled"}
+        key={"strokeEnabled"}
         label={"strokeEnabled"}
         value={strokeEnabled}
         onChange={handleChange}

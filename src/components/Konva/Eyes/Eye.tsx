@@ -1,5 +1,5 @@
 import React from "react";
-import { MyRect, MyCircle } from "../";
+import { AnimatedRectangle, AnimatedCircle } from "../";
 //import getInnerPosition from "../../../utils/getInnerPositions";
 import { getRatio, getInnerPosition } from "../../../utils";
 
@@ -52,6 +52,7 @@ export interface EyeProps {
   outerStrokeEnabled?: boolean;
 
   id?: string;
+  box?: { width: number; height: number };
 }
 
 const Eye = (props: EyeProps) => {
@@ -104,6 +105,8 @@ const Eye = (props: EyeProps) => {
       ? (ctx: any) =>
           ctx.rect(-outerSize, -outerSize, outerSize * 2, outerSize * 2)
       : null,
+    id: props.id,
+    box: props.box,
   };
 
   const animatedGroup = useSpring({
@@ -120,6 +123,10 @@ const Eye = (props: EyeProps) => {
     y: 0,
     fill: outerFill,
     fillEnabled: outerFillEnabled,
+    id: props.id,
+    box: props.box,
+
+    // listening: false, //TODO add to Circle and Square Props;
   };
 
   const outerStrokeProps = {
@@ -128,7 +135,9 @@ const Eye = (props: EyeProps) => {
     stroke: outerStroke,
     strokeEnabled: outerStrokeEnabled,
     strokeWidth: outerStrokeWidth,
-    listening: false,
+    // listening: false, //TODO add to Circle and Square Props;
+    id: props.id,
+    box: props.box,
   };
 
   const innerProps = {
@@ -142,13 +151,17 @@ const Eye = (props: EyeProps) => {
     immediateXY: false,
     dragable: false,
     rotation: innerRotation || 0,
+    id: props.id,
+    box: props.box,
+
+    // listening: false, //TODO add to Circle and Square Props;
   };
 
   const OuterFillShape =
     outerShape === "Circle" ? (
-      <MyCircle {...outerProps} radius={outerSize} />
+      <AnimatedCircle {...outerProps} radius={outerSize} />
     ) : outerShape === "Rect" ? (
-      <MyRect
+      <AnimatedRectangle
         {...outerProps}
         width={outerSize * 2}
         height={outerSize * 2}
@@ -159,9 +172,9 @@ const Eye = (props: EyeProps) => {
 
   const OuterStrokeShape =
     outerShape === "Circle" ? (
-      <MyCircle {...outerStrokeProps} radius={outerSize} />
+      <AnimatedCircle {...outerStrokeProps} radius={outerSize} />
     ) : outerShape === "Rect" ? (
-      <MyRect
+      <AnimatedRectangle
         {...outerStrokeProps}
         width={outerSize * 2}
         height={outerSize * 2}
@@ -172,9 +185,9 @@ const Eye = (props: EyeProps) => {
 
   const InnerShape =
     innerShape === "Circle" ? (
-      <MyCircle {...innerProps} radius={innerSize} /> //TODO // Consideration //  Add Rotation for Circle
+      <AnimatedCircle {...innerProps} radius={innerSize} /> //TODO // Consideration //  Add Rotation for Circle
     ) : innerShape === "Rect" ? (
-      <MyRect
+      <AnimatedRectangle
         {...innerProps}
         width={innerSize * 2}
         height={innerSize * 2}
@@ -185,11 +198,14 @@ const Eye = (props: EyeProps) => {
 
   return (
     <animated.Group
+      id={props.id}
       {...animatedGroup}
       onDragStart={props.handleDrag}
       onDragEnd={props.handleDrag}
       onClick={props.handleClick}
       draggable={draggable}
+      listening={true}
+      box={props.box}
     >
       <Group {...groupProps}>
         {OuterFillShape}

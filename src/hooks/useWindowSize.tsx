@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useEventListener from "./useEventLIstener";
+import useEventListener from "./useEventListener";
 import isSSR from "../utils/isSSR";
 
 interface WindowSize {
@@ -8,7 +8,7 @@ interface WindowSize {
   windowReady: boolean;
 }
 
-function useWindowSize(): WindowSize {
+const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState<WindowSize>({
     width: 0,
     height: 0,
@@ -32,6 +32,6 @@ function useWindowSize(): WindowSize {
   }, []);
 
   return windowSize;
-}
+};
 
 export default useWindowSize;

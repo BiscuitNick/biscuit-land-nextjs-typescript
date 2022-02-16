@@ -23,8 +23,6 @@ export interface BoardProps {
 }
 
 const Board = (props: BoardProps) => {
-  // const canvasRef = useRef(null);
-
   return (
     <Stage width={props.width} height={props.height}>
       <Layer ref={props.canvasRef}>{props.children}</Layer>

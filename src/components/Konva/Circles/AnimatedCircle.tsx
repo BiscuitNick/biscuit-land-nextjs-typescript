@@ -25,9 +25,14 @@ export interface CircleProps {
   handleClick?: any;
   handleDrag?: any;
   immediateXY?: boolean;
+
+  listening?: boolean;
+
+  id?: string;
+  box?: { width: number; height: number };
 }
 
-const MyCircle = (props: CircleProps) => {
+const AnimatedCircle = (props: CircleProps) => {
   const {
     x,
     y,
@@ -49,14 +54,17 @@ const MyCircle = (props: CircleProps) => {
     <animated.Circle
       {...circleSpring}
       {...xySpring}
+      id={props.id}
+      box={props.box}
       draggable={props.draggable}
       fillEnabled={fillEnabled}
       strokeEnabled={strokeEnabled}
       onClick={props.handleClick}
       onDragStart={props.handleDrag}
       onDragEnd={props.handleDrag}
+      listening={props.listening}
     />
   );
 };
 
-export default MyCircle;
+export default AnimatedCircle;

@@ -54,19 +54,24 @@ const buildEyeProps = (params: eyeBuild) => {
 
   const outerSize = (r_outerSize * (width + height)) / 2;
   const outerStrokeWidth = outerSize * (r_outerStrokeWidth || 0);
-  const adjustedOuterSize = outerSize - 2 * outerStrokeWidth;
+  const adjustedOuterSize = outerSize - outerStrokeWidth / 2;
 
   const innerSize = outerSize * r_outer2inner;
   const innerStrokeWidth = innerSize * (r_innerStrokeWidth || 0);
-  const adjustedInnerSize = innerSize - 2 * innerStrokeWidth;
+  const adjustedInnerSize = innerSize - innerStrokeWidth / 2;
 
   return {
     ...eyeProps,
     ...absolutes,
     outerSize: adjustedOuterSize,
     innerSize: adjustedInnerSize,
+
+    innerStrokeWidth,
+    outerStrokeWidth,
+
     x,
     y,
+    box: absolutes,
   };
 };
 

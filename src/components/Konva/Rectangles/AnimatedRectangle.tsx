@@ -22,14 +22,17 @@ export interface RectProps {
   handleDrag?: any;
 
   id?: string;
+  box?: { width: number; height: number };
 
   fillEnabled?: boolean;
   strokeEnabled?: boolean;
   draggable?: boolean;
   immediateXY?: boolean;
+
+  listening?: boolean;
 }
 
-const MyRect = (props: RectProps) => {
+const AnimatedRectangle = (props: RectProps) => {
   const { handleClick, draggable } = props;
   const {
     x,
@@ -67,6 +70,8 @@ const MyRect = (props: RectProps) => {
 
   return (
     <animated.Rect
+      id={props.id}
+      box={props.box}
       {...springProps}
       {...xySpring}
       fillEnabled={fillEnabled}
@@ -75,8 +80,9 @@ const MyRect = (props: RectProps) => {
       onClick={handleClick}
       onDragStart={props.handleDrag}
       onDragEnd={props.handleDrag}
+      listening={props.listening}
     />
   );
 };
 
-export default MyRect;
+export default AnimatedRectangle;

@@ -27,13 +27,14 @@ export interface ImageProps {
   handleDrag?: any;
 
   id?: string;
+  box?: { width: number; height: number };
 
   draggable?: boolean;
   fillEnabled?: boolean;
   strokeEnabled?: boolean;
 }
 
-const MyImage = (props: ImageProps) => {
+const AnimatedImage = (props: ImageProps) => {
   const [image, status] = useImage(props.src);
   const { x, y, width, height, rotation, offsetX, offsetY } = props;
   const imageSpring = useSpring({
@@ -65,8 +66,11 @@ const MyImage = (props: ImageProps) => {
       props.strokeWidth && props.strokeEnabled ? props.strokeWidth : null,
   };
 
+
   return (
     <animated.Image
+      id={props.id}
+      box={props.box}
       {...imageSpring}
       {...colorProps}
       // x={props.x}
@@ -86,4 +90,4 @@ const MyImage = (props: ImageProps) => {
   );
 };
 
-export default MyImage;
+export default AnimatedImage;

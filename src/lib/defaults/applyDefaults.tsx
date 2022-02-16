@@ -1,8 +1,11 @@
-import { eyeDefaults, imageDefaults, rectDefaults } from ".";
+import { eyeDefaults, imageDefaults, rectDefaults, textDefaults } from ".";
 
 interface contentItemProps {
   contentID: string;
   props: {
+    fontStyle?: string;
+    fontFamily?: string;
+
     focalPoint?: number;
     innerRotation?: number;
     outerRotation?: number;
@@ -21,6 +24,11 @@ interface contentItemProps {
     stroke?: string;
     draggable?: boolean;
     cornerRadius?: number;
+
+    r_strokeWidth?: number;
+    textContent?: string;
+    minLines?: number;
+    maxLines?: number;
   };
   relatives: {
     r_outerSize?: number;
@@ -54,6 +62,13 @@ const applyDefaults = (contentItem: contentItemProps) => {
       return {
         props: { ...rectDefaults.props, ...props },
         relatives: { ...rectDefaults.relatives, ...relatives },
+      };
+    }
+
+    case "text": {
+      return {
+        props: { ...textDefaults.props, ...props },
+        relatives: { ...textDefaults.relatives, ...relatives },
       };
     }
 

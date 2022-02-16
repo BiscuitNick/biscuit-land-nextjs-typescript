@@ -1,1 +1,1 @@
-export { default as MyCircle } from "./MyCircle";
+export { default as AnimatedCircle } from "./AnimatedCircle";

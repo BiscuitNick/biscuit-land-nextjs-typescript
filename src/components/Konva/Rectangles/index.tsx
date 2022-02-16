@@ -1,1 +1,1 @@
-export { default as MyRect } from "./MyRect";
+export { default as AnimatedRectangle } from "./AnimatedRectangle";
