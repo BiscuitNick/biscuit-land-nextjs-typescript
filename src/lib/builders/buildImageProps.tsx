@@ -1,26 +1,23 @@
 import { imageDefaults } from "../defaults";
 
 export interface imageBuild {
-  props: {
-    rotation?: number;
-    fill?: string;
-    stroke?: string;
-    draggable?: boolean;
-    cornerRadius?: number;
-    src?: string;
-  };
+  rotation?: number;
+  fill?: string;
+  stroke?: string;
+  draggable?: boolean;
+  cornerRadius?: number;
+  src: string;
+  r_width: number;
+  r_height: number;
+  r_x: number;
+  r_y: number;
+  r_strokeWidth: number;
+
   absolutes: {
     x?: number;
     y?: number;
     width: number;
     height: number;
-  };
-  relatives: {
-    r_width?: number;
-    r_height?: number;
-    r_x?: number;
-    r_y?: number;
-    r_strokeWidth?: 0 | number;
   };
 }
 
@@ -28,12 +25,9 @@ export interface imageBuild {
 //
 
 const buildImageProps = (params: imageBuild) => {
-  const { props, relatives, absolutes } = params;
-  const imageProps = { ...imageDefaults.props, ...props };
-  const imageRelatives = { ...imageDefaults.relatives, ...relatives };
-
+  const { r_x, r_y, r_width, r_height, r_strokeWidth } = params;
+  const { absolutes } = params;
   const { width, height } = absolutes;
-  const { r_x, r_y, r_width, r_height, r_strokeWidth } = imageRelatives;
 
   const x = r_x * width;
   const y = r_y * height;
@@ -55,7 +49,7 @@ const buildImageProps = (params: imageBuild) => {
     box: absolutes,
   };
 
-  return { ...imageProps, ...box };
+  return { ...params, ...box };
 };
 
 export default buildImageProps;

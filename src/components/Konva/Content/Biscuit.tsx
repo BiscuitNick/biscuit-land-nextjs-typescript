@@ -10,7 +10,7 @@ import {
 } from "../../../lib/builders";
 
 export interface BiscuitProps {
-  contentObject: { [key: string]: { props: object; relatives: object } };
+  contentObject: { [key: string]: any };
   contentIDs: string[];
 
   box: { width: number; height: number; x?: number; y?: number };
@@ -51,7 +51,7 @@ const Biscuit = (props: BiscuitProps) => {
       case "eye":
         let eyeprops = buildEyeProps({
           ...data,
-          absolutes: squareBox, //{ width: squareWH, height: squareWH },
+          absolutes: squareBox,
         });
 
         let innerXY = getInnerPosition({
@@ -93,6 +93,8 @@ const Biscuit = (props: BiscuitProps) => {
           absolutes: squareBox, //{ width: squareWH, height: squareWH },
         });
 
+        console.log(imageProps);
+
         return (
           <AnimatedImage
             key={id}
@@ -107,11 +109,6 @@ const Biscuit = (props: BiscuitProps) => {
           ...data,
           absolutes: squareBox,
         });
-
-        // console.log(data);
-        // console.log(squareBox);
-        // console.log(textProps);
-        // console.log(textProps);
 
         return (
           <AnimatedText

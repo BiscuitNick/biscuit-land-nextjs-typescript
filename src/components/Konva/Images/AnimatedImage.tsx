@@ -26,7 +26,7 @@ export interface ImageProps {
   handleClick?: any;
   handleDrag?: any;
 
-  id?: string;
+  id: string;
   box?: { width: number; height: number };
 
   draggable?: boolean;
@@ -65,7 +65,6 @@ const AnimatedImage = (props: ImageProps) => {
     strokeWidth:
       props.strokeWidth && props.strokeEnabled ? props.strokeWidth : null,
   };
-
 
   return (
     <animated.Image

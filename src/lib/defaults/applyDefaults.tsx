@@ -2,76 +2,59 @@ import { eyeDefaults, imageDefaults, rectDefaults, textDefaults } from ".";
 
 interface contentItemProps {
   contentID: string;
-  props: {
-    fontStyle?: string;
-    fontFamily?: string;
+  fontStyle?: string;
+  fontFamily?: string;
 
-    focalPoint?: number;
-    innerRotation?: number;
-    outerRotation?: number;
-    w2h?: number;
-    sensitivity?: number;
-    movementFactor?: number;
-    innerShape?: string;
-    outerShape?: string;
-    innerFill?: string;
-    outerFill?: string;
-    innerStroke?: string;
-    outerStroke?: string;
-    disableClip?: boolean;
-    rotation?: number;
-    fill?: string;
-    stroke?: string;
-    draggable?: boolean;
-    cornerRadius?: number;
+  focalPoint?: number;
+  innerRotation?: number;
+  outerRotation?: number;
+  w2h?: number;
+  sensitivity?: number;
+  movementFactor?: number;
+  innerShape?: string;
+  outerShape?: string;
+  innerFill?: string;
+  outerFill?: string;
+  innerStroke?: string;
+  outerStroke?: string;
+  disableClip?: boolean;
+  rotation?: number;
+  fill?: string;
+  stroke?: string;
+  draggable?: boolean;
+  cornerRadius?: number;
 
-    r_strokeWidth?: number;
-    textContent?: string;
-    minLines?: number;
-    maxLines?: number;
-  };
-  relatives: {
-    r_outerSize?: number;
-    r_outer2inner?: number;
-    r_x?: number;
-    r_y?: number;
-    r_width?: number;
-    r_height?: number;
-    r_radius?: number;
-  };
+  r_strokeWidth?: number;
+  textContent?: string;
+  minLines?: number;
+  maxLines?: number;
+
+  r_outerSize?: number;
+  r_outer2inner?: number;
+  r_x?: number;
+  r_y?: number;
+  r_width?: number;
+  r_height?: number;
+  r_radius?: number;
 }
 
 const applyDefaults = (contentItem: contentItemProps) => {
-  const { contentID, props, relatives } = contentItem;
+  const { contentID } = contentItem;
   const itemType = contentID.split("_")[0];
 
   switch (itemType) {
     case "eye": {
-      return {
-        props: { ...eyeDefaults.props, ...props },
-        relatives: { ...eyeDefaults.relatives, ...relatives },
-      };
+      return { ...eyeDefaults, ...contentItem };
     }
     case "image": {
-      return {
-        props: { ...imageDefaults.props, ...props },
-        relatives: { ...imageDefaults.relatives, ...relatives },
-      };
+      return { ...imageDefaults, ...contentItem };
     }
     case "rect": {
-      return {
-        props: { ...rectDefaults.props, ...props },
-        relatives: { ...rectDefaults.relatives, ...relatives },
-      };
+      return { ...rectDefaults, ...contentItem };
     }
-
     case "text": {
-      return {
-        props: { ...textDefaults.props, ...props },
-        relatives: { ...textDefaults.relatives, ...relatives },
-      };
+      return { ...textDefaults, ...contentItem };
     }
-
     default: {
       return null;
     }

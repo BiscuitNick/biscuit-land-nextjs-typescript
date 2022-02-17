@@ -1,27 +1,23 @@
 import { rectDefaults } from "../defaults";
 
 export interface textBuild {
-  props: {
-    rotation?: number;
-    fill?: string;
-    stroke?: string;
-    draggable?: boolean;
-    cornerRadius?: number;
-    strokeEnabled?: boolean;
-    fillEnabled?: boolean;
-    strokeWidthFactor?: number;
-  };
+  rotation?: number;
+  fill?: string;
+  stroke?: string;
+  draggable?: boolean;
+  cornerRadius?: number;
+  strokeEnabled?: boolean;
+  fillEnabled?: boolean;
+  strokeWidthFactor?: number;
+  r_width: number;
+  r_height: number;
+  r_x: number;
+  r_y: number;
   absolutes: {
     x?: number;
     y?: number;
     width: number;
     height: number;
-  };
-  relatives: {
-    r_width?: number;
-    r_height?: number;
-    r_x?: number;
-    r_y?: number;
   };
 }
 
@@ -29,12 +25,8 @@ export interface textBuild {
 //
 
 const buildTextProps = (params: textBuild) => {
-  const { props, relatives, absolutes } = params;
-  const rectProps = { ...rectDefaults.props, ...props };
-  const rectRelatives = { ...rectDefaults.relatives, ...relatives };
-
+  const { r_x, r_y, r_width, r_height, absolutes } = params;
   const { width, height } = absolutes;
-  const { r_x, r_y, r_width, r_height } = rectRelatives;
 
   const x = r_x * width;
   const y = r_y * height;
@@ -51,7 +43,7 @@ const buildTextProps = (params: textBuild) => {
     box: absolutes,
   };
 
-  return { ...rectProps, ...box };
+  return { ...params, ...box };
 };
 
 export default buildTextProps;
