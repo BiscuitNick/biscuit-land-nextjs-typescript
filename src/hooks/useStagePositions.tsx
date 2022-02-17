@@ -1,6 +1,9 @@
 import { useState } from "react";
-import getStageData from "../utils/getStageData";
-import useInterval from "./useInterval";
+//import getStageData from "../utils/getStageData";
+
+// import useInterval from "./useInterval";
+
+import { getStageData, useInterval } from "@biscuitnick/biscuit-library";
 
 export interface StagePositions {
   canvasRef: any;

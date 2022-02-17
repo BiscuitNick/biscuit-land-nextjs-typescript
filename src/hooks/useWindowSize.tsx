@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import useEventListener from "./useEventListener";
-import isSSR from "../utils/isSSR";
+import { useEventListener, isSSR } from "@biscuitnick/biscuit-library";
+//import isSSR from "../utils/isSSR";
 
 interface WindowSize {
   width: number;

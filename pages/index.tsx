@@ -1,6 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
 import { useEffect, useState } from "react";
-import { applyDefaults, BiscuitEditor, BiscuitBoard } from "../src";
+
+import { BiscuitBoard, applyDefaults } from "@biscuitnick/biscuit-library";
 
 interface Props {
   contentIDs: string[];
