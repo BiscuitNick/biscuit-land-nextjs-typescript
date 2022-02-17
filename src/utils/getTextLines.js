@@ -132,7 +132,7 @@ const fitTextBox = ({ parameters, size, canvasRef }) => {
   return optimaltextrows;
 };
 
-export const getTextLines = (props) => {
+const getTextLines = (props) => {
   const { box, content, canvasRef } = props;
 
   if (!canvasRef || canvasRef.current === null) return null;
@@ -160,3 +160,5 @@ export const getTextLines = (props) => {
 
   return readyTexts;
 };
+
+export default getTextLines;

@@ -1,7 +1,9 @@
 import type { GetStaticProps, NextPage } from "next";
 import { useEffect, useState } from "react";
 
-import { BiscuitBoard, applyDefaults } from "@biscuitnick/biscuit-library";
+import { applyDefaults, BiscuitBoard } from "@biscuitnick/biscuit-library";
+
+// import BiscuitBoard from "../src/components/Konva/Boards/BiscuitBoard";
 
 interface Props {
   contentIDs: string[];
@@ -30,7 +32,7 @@ export default BiscuitIndex;
 export const getStaticProps: GetStaticProps = () => {
   const contentIDs: string[] = [
     "rect_0",
-    "image_0",
+    //   "image_0",
     "image_1",
     "text_0",
     "text_1",
@@ -42,9 +44,9 @@ export const getStaticProps: GetStaticProps = () => {
     "text_7",
     "text_8",
     "text_9",
-    "image_1",
-    "eye_0",
-    "eye_1",
+    // "image_1",
+    // "eye_0",
+    // "eye_1",
   ];
   const contentObject: any = {
     eye_0: {
@@ -87,8 +89,8 @@ export const getStaticProps: GetStaticProps = () => {
       src: "https://pbs.twimg.com/media/EUfR-F1XQAAT__R?format=jpg&name=medium",
       r_x: 0.5,
       r_y: 0.5,
-      r_width: 1,
-      r_height: 1,
+      r_width: 0.5,
+      r_height: 0.5,
     },
     image_1: {
       rotation: 0,
@@ -96,8 +98,8 @@ export const getStaticProps: GetStaticProps = () => {
       src: "https://res.cloudinary.com/drk1nv578/image/upload/t_optimized/v1612050978/biscuitland/biscuitnoshadow_e49tg3.png",
       r_x: 0.5,
       r_y: 0.5,
-      r_width: 1,
-      r_height: 1,
+      r_width: 0.5,
+      r_height: 0.5,
     },
     text_0: {
       r_x: 0.5,
