@@ -1,6 +1,6 @@
 import { Group } from "react-konva";
 import { Eye, AnimatedRectangle, AnimatedImage, AnimatedText } from "..";
-import { getInnerPosition } from "../../../utils";
+import getInnerPosition from "../../../utils/getInnerPosition";
 import useStagePositions from "../../../hooks/useStagePositions";
 import {
   buildEyeProps,
