@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import NumberInput from "./NumberInput";
+import NumberInput from "./";
 
 describe("NumberInput", () => {
   test("Renders NumberInput", () => {

@@ -11,6 +11,7 @@
     "@biscuitnick/biscuit-library": "^1.2.0",
     "@react-spring/konva": "^9.4.2",
     "@storybook/react": "^6.4.19",
+    "@testing-library/react": "^12.1.3",
     "konva": "^7.2.5",
     "next": "12.0.10",
     "react": "17.0.2",

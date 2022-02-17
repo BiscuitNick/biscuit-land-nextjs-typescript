@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import SelectAttribute from "./SelectAttribute";
+import SelectAttribute from "./";
 
 describe("Select Attribute", () => {
   test("Renders SelectAttribute", () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import ColorPickerSwitch from "./ColorPickerSwitch";
+import ColorPickerSwitch from "./";
 
 describe("ColorPickerSwitch", () => {
   test("Renders ColorPickerSwitch", () => {
