@@ -1,12 +1,10 @@
 import { useState } from "react";
-import {
-  ColorPickerSwitch,
-  NumberInput,
-  SelectAttribute,
-  TextInput,
-  ToggleSwitch,
-} from "../Inputs";
 
+import ColorPickerSwitch from "../Inputs/ColorPickers";
+import NumberInput from "../Inputs/ColorPickers";
+import SelectAttribute from "../Inputs/SelectAttribute";
+import TextInput from "../Inputs/TextInput";
+import ToggleSwitch from "../Inputs/ToggleSwitch";
 import inputAttributes from "../../lib/defaults/inputAttributes";
 
 const sharedColorAttrs = ["fill", "stroke"];
