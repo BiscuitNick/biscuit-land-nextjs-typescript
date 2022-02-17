@@ -1110,10 +1110,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@biscuitnick/biscuit-library@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@biscuitnick/biscuit-library/-/biscuit-library-1.2.0.tgz#fde708d9c21bc8c5008cb255a58b2173d2e4b632"
-  integrity sha512-J1Q/2zKWiPN0Nx/qaAcs4qCi13d6V+CxjT/yzkjGzZlm2JRnGj38Gu7X09XWncc4xiAV3EvCLVU+MBuAYHUDpw==
+"@biscuitnick/biscuit-library@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@biscuitnick/biscuit-library/-/biscuit-library-1.2.1.tgz#e54031a12407818ff040f9f7bc90179cb1e0c941"
+  integrity sha512-eiFmkG+X3DZd7EluTzp2BSutP3Lya0pS3R1sjtb4KyAwRAHVagpIDIRs4DOUACvfdjp6McCRbf9cxWKmzcp43w==
   dependencies:
     webpack "^5.68.0"
 
