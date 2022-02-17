@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import useWindowSize from "../../../hooks/useWindowSize";
+import { useWindowSize } from "@biscuitnick/biscuit-library";
 import Board from "./Board";
 import Biscuit from "../Content/Biscuit";
 import BiscuitEditor from "../../Editors/BiscuitEditor";

@@ -1,7 +1,7 @@
 import { Group } from "react-konva";
 import { Eye, AnimatedRectangle, AnimatedImage, AnimatedText } from "..";
 import getInnerPosition from "../../../utils/getInnerPosition";
-import useStagePositions from "../../../hooks/useStagePositions";
+import { useStagePositions } from "@biscuitnick/biscuit-library";
 import {
   buildEyeProps,
   buildRectProps,
