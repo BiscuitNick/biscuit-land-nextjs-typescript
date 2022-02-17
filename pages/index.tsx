@@ -386,14 +386,14 @@ export const getStaticProps: GetStaticProps = () => {
     text_7: {
       relatives: {
         r_x: 0.7,
-        r_y: 0.56,
+        r_y: 0.54,
         r_width: 0.2,
         r_height: 0.15,
       },
       props: {
         fontFamily: "Roboto Condensed",
         fontStyle: "bold",
-        textContent: "Our Guide to getting rid of the UPS man for good!",
+        textContent: "Guide to getting rid of the UPS man for good!",
         fill: "#f6f6af",
         strokeWidthFactor: 0.02,
         stroke: "#000000",
@@ -402,8 +402,8 @@ export const getStaticProps: GetStaticProps = () => {
     },
     text_8: {
       relatives: {
-        r_x: 0.63,
-        r_y: 0.69,
+        r_x: 0.72,
+        r_y: 0.64,
         r_width: 0.25,
         r_height: 0.06,
       },
@@ -428,11 +428,11 @@ export const getStaticProps: GetStaticProps = () => {
       props: {
         fontFamily: "Roboto Condensed",
         fontStyle: "bold",
-        textContent: "Canada's Hottest Dogs",
+        textContent: "Worlds Sexiest Dogs!s",
         fill: "#f6f6af",
         strokeWidthFactor: 0.02,
         stroke: "#000000",
-        align: "right",
+        align: "left",
       },
     },
   };

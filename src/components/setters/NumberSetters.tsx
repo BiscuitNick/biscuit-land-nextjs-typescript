@@ -44,8 +44,6 @@ const NumberSetters = (numberProps: NumberSetterProps) => {
   } = relatives;
 
   const handlePropChange = (value: number, id: string) => {
-    // console.log(selectedContent, value, id);
-
     updateContent({
       ...contentObject,
       contentObject: {

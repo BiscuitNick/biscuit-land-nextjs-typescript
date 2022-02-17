@@ -150,10 +150,12 @@ const AnimatedText = (props: AnimatedTextProps) => {
     <animated.Text
       key={"txt-" + i}
       {...txt}
+      id={id}
       draggable={false}
       fillEnabled={fillEnabled}
       strokeEnabled={strokeEnabled}
       shadowForStrokeEnabled={false}
+      onClick={handleClick}
     ></animated.Text>
   ));
 
@@ -176,7 +178,8 @@ const AnimatedText = (props: AnimatedTextProps) => {
       onClick={handleClick}
       onDragStart={handleDrag}
       onDragEnd={handleDrag}
-      draggable={true}
+      draggable={draggable}
+      listening={true}
     >
       {SizedTexts}
     </animated.Group>

@@ -42,7 +42,7 @@ const SelectionSetter = (selectionProps: selectAttributeProps) => {
   const { innerShape, outerShape, fontStyle, fontFamily, align } = props;
 
   const shapes = ["Circle", "Rect"];
-  const fontStyles = ["", "italic", "bold", "italic bold"];
+  const fontStyles = ["normal", "italic", "bold", "italic bold"];
   const fonts = [
     "Open Sans",
     "Roboto Condensed",

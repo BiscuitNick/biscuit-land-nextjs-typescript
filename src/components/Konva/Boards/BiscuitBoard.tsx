@@ -40,6 +40,8 @@ const BiscuitBoard = (props: biscuitParams) => {
     const attrs = e.target.attrs;
     const { id } = attrs;
 
+    console.log(attrs);
+
     setSelectedID(id || "");
   };
 
