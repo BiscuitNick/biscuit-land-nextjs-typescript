@@ -5,7 +5,7 @@ import {
   SelectAttribute,
   TextInput,
   ToggleSwitch,
-} from "..";
+} from "../Inputs";
 
 import inputAttributes from "../../lib/defaults/inputAttributes";
 
