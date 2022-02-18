@@ -30,7 +30,7 @@ interface AnimatedTextProps {
   handleDrag?: any;
 
   //Meta
-  id?: string;
+  contentID: string;
   box: { width: number; height: number };
   canvasRef: any;
 
@@ -71,7 +71,7 @@ const AnimatedText = (props: AnimatedTextProps) => {
     handleClick,
     handleDrag,
 
-    id,
+    contentID,
     box,
     canvasRef,
 
@@ -95,8 +95,6 @@ const AnimatedText = (props: AnimatedTextProps) => {
       content: props,
       canvasRef,
     });
-
-    console.log(mytexts);
 
     return mytexts || [];
   }, [textContent, width, height, fontFamily, fontStyle]); //box.width, box.height,
@@ -153,7 +151,7 @@ const AnimatedText = (props: AnimatedTextProps) => {
     <animated.Text
       key={"txt-" + i}
       {...txt}
-      id={id}
+      contentID={contentID}
       draggable={false}
       fillEnabled={fillEnabled}
       strokeEnabled={strokeEnabled}
@@ -176,7 +174,8 @@ const AnimatedText = (props: AnimatedTextProps) => {
   return (
     <animated.Group
       {...groupSpring}
-      id={id}
+      contentID={contentID}
+      id={contentID}
       box={box}
       onClick={handleClick}
       onDragStart={handleDrag}

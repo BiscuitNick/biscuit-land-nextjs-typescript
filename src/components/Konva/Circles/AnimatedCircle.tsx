@@ -28,7 +28,8 @@ export interface CircleProps {
 
   listening?: boolean;
 
-  id?: string;
+  contentID: string;
+
   box?: { width: number; height: number };
 }
 
@@ -54,7 +55,8 @@ const AnimatedCircle = (props: CircleProps) => {
     <animated.Circle
       {...circleSpring}
       {...xySpring}
-      id={props.id}
+      contentID={props.contentID}
+      id={props.contentID}
       box={props.box}
       draggable={props.draggable}
       fillEnabled={fillEnabled}

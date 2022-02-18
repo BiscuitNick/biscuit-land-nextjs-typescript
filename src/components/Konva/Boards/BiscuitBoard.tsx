@@ -30,28 +30,27 @@ const BiscuitBoard = (props: biscuitParams) => {
   const [changeLog, setChangeLog] = useState<any>([]);
 
   const contentItem = contentObject[selectedID];
-
   const squareWH = Math.min(width, height);
 
   const handleClick = (e: { target: { attrs: any } }) => {
     const attrs = e.target.attrs;
-    const { id } = attrs;
+    const { contentID } = attrs;
 
-    setSelectedID(id || "");
+    setSelectedID(contentID || "");
   };
 
   const handleDrag = (e: { target: { attrs: any } }) => {
     const attrs = e.target.attrs;
-    const { id, x, y, box } = attrs;
+    const { contentID, x, y, box } = attrs;
 
-    setSelectedID(id);
+    setSelectedID(contentID);
 
-    if (dragItem.current != id) {
-      dragItem.current = id;
+    if (dragItem.current != contentID) {
+      dragItem.current = contentID;
     } else {
       dragItem.current = "";
 
-      const contentItem = contentObject[id];
+      const contentItem = contentObject[contentID];
 
       let newR_X = x / box.width; //squareWH;
       let newR_Y = y / box.height; //squareWH;
@@ -63,7 +62,7 @@ const BiscuitBoard = (props: biscuitParams) => {
         setChangeLog([
           ...changeLog,
           {
-            id: id,
+            contentID,
             attr: "r_x",
             r_x: newR_X,
             r_y: newR_Y,
@@ -74,7 +73,7 @@ const BiscuitBoard = (props: biscuitParams) => {
       } else {
         let copyLog = [...changeLog];
         copyLog[copyLog.length - 1] = {
-          id: id,
+          contentID,
           attr: "r_x",
           r_x: newR_X,
           r_y: newR_Y,
@@ -86,7 +85,7 @@ const BiscuitBoard = (props: biscuitParams) => {
 
       setContentObject({
         ...contentObject,
-        [id]: {
+        [contentID]: {
           ...contentItem,
           r_x: newR_X,
           r_y: newR_Y,
@@ -108,7 +107,7 @@ const BiscuitBoard = (props: biscuitParams) => {
       setChangeLog([
         ...changeLog,
         {
-          id: selectedID,
+          contentID: selectedID,
           attr,
           [attr]: value,
           method,
@@ -118,7 +117,7 @@ const BiscuitBoard = (props: biscuitParams) => {
     } else {
       let copyLog = [...changeLog];
       copyLog[copyLog.length - 1] = {
-        id: selectedID,
+        contentID: selectedID,
         attr,
         [attr]: value,
         method,
@@ -128,9 +127,7 @@ const BiscuitBoard = (props: biscuitParams) => {
     }
   };
 
-  useEffect(() => {
-    console.log(changeLog);
-  }, [changeLog.length]);
+  useEffect(() => {}, [changeLog.length]);
 
   return (
     <>

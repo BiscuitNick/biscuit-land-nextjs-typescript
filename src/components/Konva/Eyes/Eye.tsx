@@ -50,7 +50,7 @@ export interface EyeProps {
   outerFillEnabled?: boolean;
   outerStrokeEnabled?: boolean;
 
-  id?: string;
+  contentID: string;
   box?: { width: number; height: number };
 }
 
@@ -122,7 +122,7 @@ const Eye = (props: EyeProps) => {
     y: 0,
     fill: outerFill,
     fillEnabled: outerFillEnabled,
-    id: props.id,
+    contentID: props.contentID,
     box: props.box,
 
     // listening: false, //TODO add to Circle and Square Props;
@@ -135,7 +135,7 @@ const Eye = (props: EyeProps) => {
     strokeEnabled: outerStrokeEnabled,
     strokeWidth: outerStrokeWidth,
     // listening: false, //TODO add to Circle and Square Props;
-    id: props.id,
+    contentID: props.contentID,
     box: props.box,
   };
 
@@ -150,7 +150,7 @@ const Eye = (props: EyeProps) => {
     immediateXY: false,
     dragable: false,
     rotation: innerRotation || 0,
-    id: props.id,
+    contentID: props.contentID,
     box: props.box,
 
     // listening: false, //TODO add to Circle and Square Props;
@@ -197,7 +197,8 @@ const Eye = (props: EyeProps) => {
 
   return (
     <animated.Group
-      id={props.id}
+      contentID={props.contentID}
+      id={props.contentID}
       {...animatedGroup}
       onDragStart={props.handleDrag}
       onDragEnd={props.handleDrag}

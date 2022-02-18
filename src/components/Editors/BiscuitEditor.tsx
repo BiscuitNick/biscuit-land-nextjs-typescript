@@ -1,13 +1,10 @@
 import { useState } from "react";
 
 import ColorPickerSwitch from "../Inputs/ColorPickers";
-
 import NumberInput from "../Inputs/NumberInput";
 import SelectAttribute from "../Inputs/SelectAttribute";
 import TextInput from "../Inputs/TextInput";
 import ToggleSwitch from "../Inputs/ToggleSwitch";
-
-// import { ColorPickerSwitch , NumberInput, SelectAttribute, TextInput, Tog} from "..";
 
 import inputAttributes from "../../lib/defaults/inputAttributes";
 

@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
 
-module.exports = nextConfig
+  env: {
+    APITOKEN: process.env.APITOKEN,
+  },
+};
+
+module.exports = nextConfig;

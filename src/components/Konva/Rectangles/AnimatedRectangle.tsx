@@ -21,7 +21,7 @@ export interface RectProps {
   handleClick?: any;
   handleDrag?: any;
 
-  id?: string;
+  contentID: string;
   box?: { width: number; height: number };
 
   fillEnabled?: boolean;
@@ -70,7 +70,8 @@ const AnimatedRectangle = (props: RectProps) => {
 
   return (
     <animated.Rect
-      id={props.id}
+      contentID={props.contentID}
+      id={props.contentID}
       box={props.box}
       {...springProps}
       {...xySpring}
