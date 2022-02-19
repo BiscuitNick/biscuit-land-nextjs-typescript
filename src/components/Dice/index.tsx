@@ -6,6 +6,7 @@ export interface DiceFace {
   text: string | null;
   backgroundColor: string | null;
   border: string | null;
+  divStyle?: any;
 }
 
 interface Dice {
@@ -107,18 +108,20 @@ const Dice = (props: Dice) => {
           let face = faces[i % faces.length];
           console.log(face);
 
-          const { img, text, backgroundColor, border } = face;
+          const { img, text, backgroundColor, border, divStyle } = face;
 
           const style = {
             // margin: "auto",
             width,
             height,
 
-            display: "grid",
-            backgroundImage: img ? `url(${img})` : "",
-            backgroundColor: backgroundColor || "",
-            backgroundSize: `cover`,
-            border: border || "",
+            ...divStyle,
+
+            // display: "grid",
+            // backgroundImage: img ? `url(${img})` : "",
+            // backgroundColor: backgroundColor || "",
+            // backgroundSize: `cover`,
+            // border: border || "",
             // boxSizing: "border-box",
           };
 
@@ -138,8 +141,7 @@ const Dice = (props: Dice) => {
                 style={{
                   ...style,
                   boxSizing: "border-box",
-                  backgroundSize: 400,
-                  backgroundPosition: "left bottom",
+                  backgroundSize: size * 2,
                 }}
               >
                 {text ? (
