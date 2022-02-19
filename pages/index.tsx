@@ -1,14 +1,8 @@
 import type { GetStaticProps, NextPage } from "next";
 import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
-
 import { applyDefaults, BiscuitBoard } from "@biscuitnick/biscuit-library";
 import axios from "axios";
-
-// import BiscuitBoard from "../src/components/Konva/Boards/BiscuitBoard";
-// import { applyDefaults } from "../src";
-
-const APITOKEN = process.env.APITOKEN;
 
 interface Props {
   contentIDs: string[];
@@ -56,20 +50,27 @@ const query = qs.stringify(
 );
 
 export async function getStaticProps<GetStaticProps>() {
-  const response = await axios.get(
-    `http://localhost:1337/api/biscuits?${query}`,
-    {
-      headers: {
-        Authorization: `Bearer ${APITOKEN}`,
-      },
-    }
-  );
+  const APIPATH = process.env.APIPATH;
+  const APITOKEN = process.env.APITOKEN;
+
+  const response = await axios.get(`${APIPATH}/biscuits?${query}`, {
+    headers: {
+      Authorization: `Bearer ${APITOKEN}`,
+    },
+  });
 
   const {
     data: { data },
   } = response;
-  const { contentIDs, contentArray } = data[0].attributes;
 
+  var contentIDs = [];
+  var contentArray = [];
+
+  if (data.length) {
+    const attributes = data[0].attributes;
+    contentIDs = attributes.contentIDs;
+    contentArray = attributes.contentArray;
+  }
   const contentObject: any = {};
   contentArray.forEach((item: any) => {
     const { contentID } = item;

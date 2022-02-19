@@ -47,38 +47,32 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // );
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const APIPATH = process.env.APIPATH;
+  const APITOKEN = process.env.APITOKEN;
+
   const slug = params?.slug;
 
   const query = qs.stringify(
     {
-      // sort: ["title:asc"],
       filters: {
         biscuitID: {
           $eq: slug,
         },
       },
       populate: "*",
-      // fields: ["title"],
-      // pagination: {
-      //   pageSize: 10,
-      //   page: 1,
-      // },
       publicationState: "live",
     },
     {
-      encodeValuesOnly: true, // prettify url
+      encodeValuesOnly: true,
     }
   );
   if (slug) {
     try {
-      const response = await axios.get(
-        `http://localhost:1337/api/biscuits?${query}`,
-        {
-          headers: {
-            Authorization: `Bearer ${APITOKEN}`,
-          },
-        }
-      );
+      const response = await axios.get(`${APIPATH}/biscuits?${query}`, {
+        headers: {
+          Authorization: `Bearer ${APITOKEN}`,
+        },
+      });
 
       const {
         data: { data },

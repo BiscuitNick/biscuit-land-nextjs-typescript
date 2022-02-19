@@ -4,6 +4,7 @@ const nextConfig = {
 
   env: {
     APITOKEN: process.env.APITOKEN,
+    APIPATH: process.env.APIPATH,
   },
 };
 
