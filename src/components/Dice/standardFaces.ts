@@ -10,7 +10,7 @@ export const standardFaces: DiceFace[] = [
     backgroundColor: "#000000",
     border: `2px solid black`,
     divStyle: {
-      border: `2px solid black`,
+      border: `1px solid black`,
       // backgroundColor: "#000000",
       backgroundImage: `url(${image})`,
       backgroundPosition: "left bottom",
@@ -22,7 +22,7 @@ export const standardFaces: DiceFace[] = [
     backgroundColor: "#000000",
     border: `2px solid black`,
     divStyle: {
-      border: `2px solid black`,
+      border: `1px solid black`,
       // backgroundColor: "#000000",
       backgroundImage: `url(${image})`,
       backgroundPosition: "right bottom",
@@ -32,9 +32,9 @@ export const standardFaces: DiceFace[] = [
     img: "https://raw.githubusercontent.com/BiscuitNick/biscuit-components/master/public/images/3.png",
     text: null,
     backgroundColor: "#000000",
-    border: `2px solid black`,
+    border: `1px solid black`,
     divStyle: {
-      border: `2px solid black`,
+      border: `1px solid black`,
       // backgroundColor: "#000000",
       backgroundImage: `url(${image})`,
       backgroundPosition: "left top",
@@ -44,9 +44,9 @@ export const standardFaces: DiceFace[] = [
     img: "https://raw.githubusercontent.com/BiscuitNick/biscuit-components/master/public/images/4.png",
     text: null,
     backgroundColor: "#000000",
-    border: `2px solid black`,
+    border: `1px solid black`,
     divStyle: {
-      border: `2px solid black`,
+      border: `1px solid black`,
       // backgroundColor: "#000000",
       backgroundImage: `url(${image})`,
       backgroundPosition: "right top",

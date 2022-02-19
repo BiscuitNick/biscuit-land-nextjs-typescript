@@ -10,7 +10,7 @@ interface Props {}
 const DiceIndex: NextPage<Props> = () => {
   const [n, set] = useState([2, 3, 0, 1]);
   const [counter, increment] = useState(0);
-  const size = 400;
+  const size = 200;
 
   const handleClick = () => {
     let randoms = n.map((num) => Math.floor(Math.random() * 4));

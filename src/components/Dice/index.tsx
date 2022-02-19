@@ -142,9 +142,10 @@ const Dice = (props: Dice) => {
                   ...style,
                   boxSizing: "border-box",
                   backgroundSize: size * 2,
+                  display: "grid",
                 }}
               >
-                {text ? (
+                {true ? (
                   <span
                     style={{
                       margin: "auto",
@@ -154,10 +155,10 @@ const Dice = (props: Dice) => {
                       userSelect: "none",
                       fontFamily: "roboto",
                       fontWeight: "bold",
-                      textShadow: "1px 1px 1px #000",
+                      textShadow: "2px 2px 2px #000",
                     }}
                   >
-                    {text}
+                    {i}
                   </span>
                 ) : null}
               </div>
