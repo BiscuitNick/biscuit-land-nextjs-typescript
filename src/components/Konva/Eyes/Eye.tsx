@@ -58,36 +58,25 @@ const Eye = (props: EyeProps) => {
   const {
     x,
     y,
-    width,
-    height,
     outerSize,
     outerShape,
     outerFill,
     outerStroke,
     outerRotation,
-
     innerSize,
     innerShape,
     innerFill,
     innerStroke,
     innerRotation,
-
-    // focalPoint,
     disableClip,
-    // sensitivity,
-    // movementFactor, //InnerShape movement distance // OuterSize*MovmentFactor ==> MovmentRange
     w2h,
-
     innerXY,
-
     innerFillEnabled,
     innerStrokeEnabled,
     outerFillEnabled,
     outerStrokeEnabled,
-
     innerStrokeWidth,
     outerStrokeWidth,
-
     draggable,
   } = props;
 
@@ -104,7 +93,8 @@ const Eye = (props: EyeProps) => {
       ? (ctx: any) =>
           ctx.rect(-outerSize, -outerSize, outerSize * 2, outerSize * 2)
       : null,
-    id: props.id,
+    id: props.contentID,
+
     box: props.box,
   };
 

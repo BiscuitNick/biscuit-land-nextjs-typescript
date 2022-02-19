@@ -1,10 +1,12 @@
 import type { GetStaticProps, NextPage } from "next";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Head from "next/head";
 
-import { applyDefaults } from "@biscuitnick/biscuit-library";
+import { applyDefaults, BiscuitBoard } from "@biscuitnick/biscuit-library";
 import axios from "axios";
 
-import BiscuitBoard from "../src/components/Konva/Boards/BiscuitBoard";
+// import BiscuitBoard from "../src/components/Konva/Boards/BiscuitBoard";
+// import { applyDefaults } from "../src";
 
 const APITOKEN = process.env.APITOKEN;
 
@@ -13,18 +15,29 @@ interface Props {
   contentObject: any;
 }
 
-const BiscuitIndex: NextPage<Props> = (props) => {
-  const { contentIDs, contentObject } = props;
+const BiscuitIndex: NextPage<Props> = ({
+  contentIDs = [],
+  contentObject = {},
+}) => {
+  //const { contentIDs, contentObject } = props;
   const [isReady, setReady] = useState(false);
 
-  console.log(contentIDs, contentObject);
+  const ref = useRef();
 
   useEffect(() => {
     setReady(true);
   }, []);
 
+  // return <div>Waiting for Client...</div>;
+
+  // return <div>Some Text</div>;
+
   return isReady ? (
     <>
+      <Head>
+        <title>Create Next App</title>
+        {/* <link rel="icon" href="/favicon.ico" /> */}
+      </Head>
       <BiscuitBoard contentIDs={contentIDs} contentObject={contentObject} />
     </>
   ) : (
@@ -32,12 +45,19 @@ const BiscuitIndex: NextPage<Props> = (props) => {
   );
 };
 
-export default BiscuitIndex;
+const qs = require("qs");
+const query = qs.stringify(
+  {
+    populate: "*",
+  },
+  {
+    encodeValuesOnly: true,
+  }
+);
 
 export async function getStaticProps<GetStaticProps>() {
-  // async function fetchData() {
   const response = await axios.get(
-    "http://localhost:1337/api/biscuits?populate=*",
+    `http://localhost:1337/api/biscuits?${query}`,
     {
       headers: {
         Authorization: `Bearer ${APITOKEN}`,
@@ -61,13 +81,6 @@ export async function getStaticProps<GetStaticProps>() {
     const mergeDefaults = applyDefaults(item);
     contentObject[contentID] = { ...mergeDefaults, contentID };
   });
-
-  // contentIDs.forEach((id: string) => {
-  //   let item = contentObject[id];
-  //   let mergedWithDefaults = applyDefaults({ contentID: id, ...item });
-
-  //   contentObject[id] = mergedWithDefaults;
-  // });
 
   return {
     props: {
@@ -290,3 +303,5 @@ export async function getStaticProps<GetStaticProps>() {
 //     align: "left",
 //   },
 // };
+
+export default BiscuitIndex;

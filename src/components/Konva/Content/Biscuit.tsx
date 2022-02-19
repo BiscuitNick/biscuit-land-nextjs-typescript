@@ -1,10 +1,14 @@
 import { Group } from "react-konva";
 import { Eye, AnimatedRectangle, AnimatedImage, AnimatedText } from "..";
 // import  from "../../../utils/getInnerPosition";
-import {
-  useStagePositions,
-  getInnerPosition,
-} from "@biscuitnick/biscuit-library";
+// import {
+//   useStagePositions,
+//   getInnerPosition,
+// } from "@biscuitnick/biscuit-library";
+
+import useStagePositions from "../../../hooks/useStagePositions";
+import getInnerPosition from "../../../utils/getInnerPosition";
+
 import {
   buildEyeProps,
   buildRectProps,

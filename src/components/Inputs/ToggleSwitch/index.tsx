@@ -12,14 +12,8 @@ export interface ToggleSwitchProps {
   color?: string;
 }
 
-const ToggleSwitch = ({
-  round = true,
-  color = "#2196f3",
-  ...props
-}: ToggleSwitchProps) => {
+const ToggleSwitch = ({ round = true, ...props }: ToggleSwitchProps) => {
   const { id, label, value, onChange } = props;
-
-  const spanStyle = { backgroundColor: color };
 
   return (
     <div className="inputContainer2Wide">
@@ -30,10 +24,7 @@ const ToggleSwitch = ({
       ) : null}
       <label className="switch">
         <input type="checkbox" checked={value} onChange={onChange} id={id} />
-        <span
-          className={`switchspan ${round ? "round" : ""}`}
-          style={spanStyle}
-        ></span>
+        <span className={`switchspan ${round ? "round" : ""}`}></span>
       </label>
     </div>
   );

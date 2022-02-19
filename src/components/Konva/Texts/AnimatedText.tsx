@@ -1,6 +1,4 @@
-import { useCallback, useEffect, useState, useMemo } from "react";
-// import { getTextLines } from "@biscuitnick/biscuit-library";
-
+import { useMemo } from "react";
 import getTextLines from "../../../utils/getTextLines";
 
 const SpringKonva = require("@react-spring/konva");

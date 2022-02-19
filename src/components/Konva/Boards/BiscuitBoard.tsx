@@ -1,11 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+// import React from "react";
 
-import { useWindowSize } from "@biscuitnick/biscuit-library";
+import React, { useEffect, useRef, useState } from "react";
+// import { useWindowSize } from "@biscuitnick/biscuit-library";
+
+import { useWindowSize } from "../../../hooks";
 import Board from "./Board";
 import Biscuit from "../Content/Biscuit";
 import BiscuitEditor from "../../Editors/BiscuitEditor";
 
-export interface biscuitParams {
+export interface BiscuitProps {
   width?: number;
   height?: number;
   contentIDs: string[];
@@ -17,7 +20,7 @@ export interface biscuitParams {
 const Konva = require("konva");
 Konva.showWarnings = false;
 
-const BiscuitBoard = (props: biscuitParams) => {
+const BiscuitBoard = (props: BiscuitProps) => {
   const { contentIDs: initIDs, contentObject: initContentObject } = props;
 
   const { width, height } = useWindowSize();

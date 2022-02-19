@@ -27,7 +27,6 @@ export interface ImageProps {
   handleDrag?: any;
 
   contentID: string;
-  id: string;
   box?: { width: number; height: number };
 
   draggable?: boolean;
