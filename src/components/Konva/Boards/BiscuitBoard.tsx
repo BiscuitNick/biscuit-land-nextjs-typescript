@@ -7,6 +7,7 @@ import { useWindowSize } from "../../../hooks";
 import Board from "./Board";
 import Biscuit from "../Content/Biscuit";
 import BiscuitEditor from "../../Editors/BiscuitEditor";
+import SaveToCloud from "../../../api/saveToCloud";
 
 export interface BiscuitProps {
   width?: number;
@@ -147,6 +148,11 @@ const BiscuitBoard = (props: BiscuitProps) => {
         />
       </Board>
       <div style={{ position: "absolute", left: 0, top: 0 }}>
+        <SaveToCloud
+          contentObject={contentObject}
+          contentIDs={contentIDs}
+          biscuitID={"test-" + Math.floor(Math.random() * 100)}
+        />
         <BiscuitEditor
           {...{
             selectedID,

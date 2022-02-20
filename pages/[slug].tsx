@@ -13,6 +13,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 interface Props {
   contentIDs: string[];
   contentObject: any;
+  contentArray?: any;
   slug: string;
 }
 
@@ -20,12 +21,12 @@ const BiscuitIndex: NextPage<Props> = ({
   contentIDs = [],
   contentObject = {},
   slug,
+  contentArray,
 }) => {
   const [isReady, setReady] = useState(false);
-  const { data, error } = useSWR(
-    `api/revalidate?secret=${process.env.MY_SECRET_TOKEN}&path=${slug}`,
-    fetcher
-  );
+  const { data, error } = useSWR(`api/revalidate?path=${slug}`, fetcher);
+
+  console.log(contentArray);
 
   useEffect(() => {
     setReady(true);
@@ -97,6 +98,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           slug,
           contentObject,
           contentIDs,
+          contentArray,
         },
       };
     } catch (error) {}

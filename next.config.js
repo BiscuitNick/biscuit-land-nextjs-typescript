@@ -6,6 +6,8 @@ const nextConfig = {
     MY_SECRET_TOKEN: process.env.MY_SECRET_TOKEN,
     APITOKEN: process.env.APITOKEN,
     APIPATH: process.env.APIPATH,
+    CLOUDAPITOKEN: process.env.CLOUDAPITOKEN,
+    CLOUDAPIPATH: process.env.CLOUDAPIPATH,
   },
 };
 
