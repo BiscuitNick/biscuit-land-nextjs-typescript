@@ -18,7 +18,7 @@ const BiscuitIndex: NextPage<Props> = ({
 }) => {
   const [isReady, setReady] = useState(false);
   const { data, error } = useSWR(
-    `api/revalidate?secret=${process.env.MY_SECRET_TOKEN}`,
+    `api/revalidate?secret=${process.env.MY_SECRET_TOKEN}&path=${path}`,
     fetcher
   );
 
