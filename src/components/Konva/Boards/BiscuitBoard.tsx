@@ -8,7 +8,7 @@ import Board from "./Board";
 import Biscuit from "../Content/Biscuit";
 import BiscuitEditor from "../../Editors/BiscuitEditor";
 import SaveToCloud from "../../../api/saveToCloud";
-
+import SetOrder from "../../Inputs/SetOrder";
 export interface BiscuitProps {
   width?: number;
   height?: number;
@@ -29,7 +29,10 @@ const BiscuitBoard = (props: BiscuitProps) => {
   const dragItem = useRef<any>(null);
 
   const [selectedID, setSelectedID] = useState("");
+
   const [contentIDs, setContentIDs] = useState(initIDs);
+  const [contentOrder, setOrder] = useState(initIDs.map((id, i) => i));
+
   const [contentObject, setContentObject] = useState(initContentObject);
   const [changeLog, setChangeLog] = useState<any>([]);
 
@@ -131,6 +134,14 @@ const BiscuitBoard = (props: BiscuitProps) => {
     }
   };
 
+  const update = (newOrder: number[], stack: string[]) => {
+    if (contentIDs.length > newOrder.length) {
+      // setOrder(myOrder);
+    } else {
+      setOrder(newOrder);
+    }
+  };
+
   useEffect(() => {}, [changeLog.length]);
 
   return (
@@ -139,7 +150,7 @@ const BiscuitBoard = (props: BiscuitProps) => {
         <Biscuit
           box={{ width, height }}
           contentObject={contentObject}
-          contentIDs={contentIDs}
+          contentIDs={contentOrder.map((n) => contentIDs[n])}
           canvasRef={canvasRef}
           handleClick={handleClick}
           handleDrag={handleDrag}
@@ -147,7 +158,24 @@ const BiscuitBoard = (props: BiscuitProps) => {
           id={"b1"}
         />
       </Board>
-      <div style={{ position: "absolute", left: 0, top: 0 }}>
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          top: 0,
+          width: 400,
+          maxHeight: height,
+          overflow: "auto",
+        }}
+      >
+        <SetOrder
+          contentObject={contentObject}
+          contentStack={contentIDs}
+          listOrder={contentOrder}
+          id={"contentIDs"}
+          // contentIndex={0}
+          update={update}
+        />
         <SaveToCloud
           contentObject={contentObject}
           contentIDs={contentIDs}
