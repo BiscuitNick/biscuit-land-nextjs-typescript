@@ -3,6 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import { applyDefaults, BiscuitBoard } from "@biscuitnick/biscuit-library";
 import axios from "axios";
+import useSWR from "swr";
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+const path = "/";
 
 interface Props {
   contentIDs: string[];
@@ -13,27 +16,18 @@ const BiscuitIndex: NextPage<Props> = ({
   contentIDs = [],
   contentObject = {},
 }) => {
-  //const { contentIDs, contentObject } = props;
   const [isReady, setReady] = useState(false);
-
-  const ref = useRef();
+  const { data, error } = useSWR(
+    `api/revalidate?secret=${process.env.MY_SECRET_TOKEN}`,
+    fetcher
+  );
 
   useEffect(() => {
     setReady(true);
   }, []);
 
-  // return <div>Waiting for Client...</div>;
-
-  // return <div>Some Text</div>;
-
   return isReady ? (
-    <>
-      <Head>
-        <title>Create Next App</title>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
-      </Head>
-      <BiscuitBoard contentIDs={contentIDs} contentObject={contentObject} />
-    </>
+    <BiscuitBoard contentIDs={contentIDs} contentObject={contentObject} />
   ) : (
     <div>Waiting for Client...</div>
   );
