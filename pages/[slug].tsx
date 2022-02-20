@@ -1,22 +1,31 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from "next";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { applyDefaults } from "@biscuitnick/biscuit-library";
 import axios from "axios";
 import BiscuitBoard from "../src/components/Konva/Boards/BiscuitBoard";
+import useSWR from "swr";
+
 const qs = require("qs");
 
 const APITOKEN = process.env.APITOKEN;
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 interface Props {
   contentIDs: string[];
   contentObject: any;
+  slug: string;
 }
 
 const BiscuitIndex: NextPage<Props> = ({
   contentIDs = [],
   contentObject = {},
+  slug,
 }) => {
   const [isReady, setReady] = useState(false);
+  const { data, error } = useSWR(
+    `api/revalidate?secret=${process.env.MY_SECRET_TOKEN}&path=${slug}`,
+    fetcher
+  );
 
   useEffect(() => {
     setReady(true);
@@ -32,19 +41,8 @@ const BiscuitIndex: NextPage<Props> = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // ...
-
   return { paths: [], fallback: "blocking" };
 };
-
-// const query = qs.stringify(
-//   {
-//     populate: "*",
-//   },
-//   {
-//     encodeValuesOnly: true,
-//   }
-// );
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const APIPATH = process.env.APIPATH;
