@@ -24,9 +24,7 @@ const BiscuitIndex: NextPage<Props> = ({
   contentArray,
 }) => {
   const [isReady, setReady] = useState(false);
-  const { data, error } = useSWR(`api/revalidate?path=${slug}`, fetcher);
-
-  console.log(contentArray);
+  const { data, error } = useSWR(`api/revalidate?path=/${slug}`, fetcher);
 
   useEffect(() => {
     setReady(true);
@@ -90,8 +88,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         const mergeDefaults = applyDefaults(item);
         contentObject[contentID] = { ...mergeDefaults, contentID };
       });
-
-      console.log(136, contentIDs, contentArray);
 
       return {
         props: {

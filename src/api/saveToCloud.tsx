@@ -1,9 +1,5 @@
-import axios from "axios";
 const APIPATH = process.env.APIPATH;
 const APITOKEN = process.env.APITOKEN;
-
-const CLOUDAPIPATH = process.env.CLOUDAPIPATH;
-const CLOUDAPITOKEN = process.env.CLOUDAPITOKEN;
 
 interface saveProps {
   contentIDs: string[];
@@ -14,6 +10,29 @@ interface saveProps {
 const SaveToCloud = (props: saveProps) => {
   const { contentIDs, contentObject, biscuitID } = props;
 
+  const contentArray = contentObjectToContentArray(contentObject);
+
+  // const contentArray = Object.keys(contentObject).map((contentID) => {
+  //   let content = contentObject[contentID];
+  //   delete content.id;
+
+  //   Object.keys(content).forEach((key) => {
+  //     if (content[key] === null || content[key] === undefined) {
+  //       delete content[key];
+  //     }
+  //   });
+
+  //   return content;
+  // });
+
+  const body = { contentIDs, contentArray, biscuitID };
+
+  return <button onClick={() => saveContent(body)}>Save To Cloud</button>;
+};
+
+export default SaveToCloud;
+
+const contentObjectToContentArray = (contentObject: any) => {
   const contentArray = Object.keys(contentObject).map((contentID) => {
     let content = contentObject[contentID];
     delete content.id;
@@ -26,25 +45,19 @@ const SaveToCloud = (props: saveProps) => {
 
     return content;
   });
-
-  const body = { contentIDs, contentArray, biscuitID };
-
-  console.log(contentArray);
-
-  async function saveContent() {
-    fetch(`${CLOUDAPIPATH}/biscuits/`, {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${CLOUDAPITOKEN}`,
-      },
-      body: JSON.stringify({ data: body }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  }
-  return <button onClick={saveContent}>Save To Cloud</button>;
+  return contentArray;
 };
 
-export default SaveToCloud;
+async function saveContent(body: any) {
+  fetch(`${APIPATH}/biscuits/`, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${APITOKEN}`,
+    },
+    body: JSON.stringify({ data: body }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+}

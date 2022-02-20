@@ -106,7 +106,6 @@ const Dice = (props: Dice) => {
       >
         {transforms.map((transform, i) => {
           let face = faces[i % faces.length];
-          console.log(face);
 
           const { img, text, backgroundColor, border, divStyle } = face;
 
