@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import SetOrder from ".";
+import SetStack from ".";
 
 const contentObject = {
   one: { name: "one", stroke: "#00ff00" },
@@ -9,15 +9,16 @@ const contentObject = {
   four: { name: "TWO", stroke: "#ff00ff" },
 };
 
-describe("SetOrder", () => {
+describe("SetStack", () => {
   test("Renders SetOrder", () => {
     render(
-      <SetOrder
+      <SetStack
         contentStack={["one", "two", "three"]}
         contentObject={contentObject}
         listOrder={[0, 1, 2]}
         update={(a, b) => console.log(a, b)}
         id={"test order"}
+        setContentObject={() => console.log()}
       />
     );
   });

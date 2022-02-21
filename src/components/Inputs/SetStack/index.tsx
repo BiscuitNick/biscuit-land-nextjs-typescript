@@ -198,8 +198,6 @@ const SetStack = (props: SetOrderProps) => {
 
         const content = contentObject[id];
 
-        console.log(content);
-
         const name = content.name || content.textContent || content.src || id;
 
         const fill = content.fill || "black";
