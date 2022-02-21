@@ -73,7 +73,7 @@ export interface SetOrderProps {
   listOrder: number[];
   id: string;
   update: (nums: number[], ids: string[]) => void;
-  setContentObject: () => void;
+  setContentObject: any; // () => void;
 }
 
 const SetStack = (props: SetOrderProps) => {
@@ -171,6 +171,8 @@ const SetStack = (props: SetOrderProps) => {
       useTouch: true;
     }
   });
+
+  const handleToggle = () => {};
 
   return (
     <div
@@ -281,7 +283,7 @@ const SetStack = (props: SetOrderProps) => {
             <ToggleSwitch
               id={"active"}
               value={content.active}
-              onChange={(e) =>
+              onChange={(e: { target: { checked: boolean } }) =>
                 setContentObject({
                   ...contentObject,
                   [id]: { ...content, active: e.target.checked },
