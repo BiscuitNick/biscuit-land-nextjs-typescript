@@ -19,6 +19,7 @@ export interface imageBuild {
     width: number;
     height: number;
   };
+  active?: boolean;
 }
 
 // Build Methods

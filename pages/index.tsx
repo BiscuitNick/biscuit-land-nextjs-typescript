@@ -1,8 +1,10 @@
 import type { GetStaticProps, NextPage } from "next";
 import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
-import { applyDefaults } from "@biscuitnick/biscuit-library";
+// import { applyDefaults } from "@biscuitnick/biscuit-library";
 import BiscuitBoard from "../src/components/Konva/Boards/BiscuitBoard";
+import applyDefaults from "../src/lib/defaults/applyDefaults";
+
 import axios from "axios";
 import useSWR from "swr";
 import Header from "../src/components/Meta/Header";
@@ -21,6 +23,8 @@ const BiscuitIndex: NextPage<Props> = ({
 }) => {
   const [isReady, setReady] = useState(false);
   const { data, error } = useSWR(`api/revalidate?path=${path}`, fetcher);
+
+  console.log(contentObject);
 
   useEffect(() => {
     setReady(true);

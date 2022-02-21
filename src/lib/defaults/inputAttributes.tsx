@@ -14,6 +14,8 @@ interface inputAttributes {
     toggleId?: string;
 
     items?: string[];
+
+    active?: boolean;
   };
 }
 
@@ -212,6 +214,10 @@ const inputAttributes: inputAttributes = {
   draggable: {
     inputType: "toggle",
     label: "Draggable",
+  },
+  active: {
+    inputType: "toggle",
+    label: "Active",
   },
   fillEnabled: {
     inputType: "toggle",

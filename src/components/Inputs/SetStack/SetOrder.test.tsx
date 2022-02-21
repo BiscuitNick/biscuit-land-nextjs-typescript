@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import SetOrder from "./";
+import SetOrder from ".";
 
 const contentObject = {
   one: { name: "one", stroke: "#00ff00" },

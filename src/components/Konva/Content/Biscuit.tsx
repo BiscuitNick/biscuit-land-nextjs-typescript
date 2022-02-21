@@ -53,6 +53,9 @@ const Biscuit = (props: BiscuitProps) => {
   const BiscuitContent = contentIDs.map((contentID) => {
     let contentType = contentID?.split("_")[0];
     const data = contentObject[contentID];
+    const { active } = data;
+
+    if (!active) return null;
 
     switch (contentType) {
       case "eye":

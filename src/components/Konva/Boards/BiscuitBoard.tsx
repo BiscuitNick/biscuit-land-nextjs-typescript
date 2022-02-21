@@ -8,7 +8,7 @@ import Board from "./Board";
 import Biscuit from "../Content/Biscuit";
 import BiscuitEditor from "../../Editors/BiscuitEditor";
 import SaveToCloud from "../../../api/saveToCloud";
-import SetOrder from "../../Inputs/SetOrder";
+import SetStack from "../../Inputs/SetStack";
 export interface BiscuitProps {
   width?: number;
   height?: number;
@@ -168,7 +168,8 @@ const BiscuitBoard = (props: BiscuitProps) => {
           overflow: "auto",
         }}
       >
-        <SetOrder
+        <SetStack
+          setContentObject={setContentObject}
           contentObject={contentObject}
           contentStack={contentIDs}
           listOrder={contentOrder}

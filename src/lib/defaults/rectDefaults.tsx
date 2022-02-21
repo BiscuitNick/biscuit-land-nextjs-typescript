@@ -13,6 +13,7 @@ const rectDefaults = {
   r_width: 1,
   r_height: 1,
   r_strokeWidth: 0.01,
+  active: true,
 };
 
 export default rectDefaults;

@@ -12,6 +12,7 @@
   "dependencies": {
     "@biscuitnick/biscuit-library": "^1.4.22",
     "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.4.2",
     "@mui/material": "^5.4.2",
     "@react-spring/konva": "^9.4.3",
