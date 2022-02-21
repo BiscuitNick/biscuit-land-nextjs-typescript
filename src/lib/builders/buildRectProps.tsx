@@ -17,6 +17,7 @@ export interface rectBuild {
     width: number;
     height: number;
   };
+  active?: boolean;
 }
 
 const buildRectProps = (params: rectBuild) => {

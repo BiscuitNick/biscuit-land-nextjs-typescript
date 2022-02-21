@@ -26,7 +26,7 @@ export interface ImageProps {
   handleClick?: any;
   handleDrag?: any;
 
-  id: string;
+  contentID: string;
   box?: { width: number; height: number };
 
   draggable?: boolean;
@@ -68,7 +68,8 @@ const AnimatedImage = (props: ImageProps) => {
 
   return (
     <animated.Image
-      id={props.id}
+      contentID={props.contentID}
+      id={props.contentID}
       box={props.box}
       {...imageSpring}
       {...colorProps}

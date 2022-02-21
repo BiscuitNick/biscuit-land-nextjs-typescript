@@ -26,6 +26,8 @@ const eyeDefaults = {
   r_y: 0.5,
   r_innerStrokeWidth: 0.1,
   r_outerStrokeWidth: 0.1,
+
+  active: true,
 };
 
 export default eyeDefaults;

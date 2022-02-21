@@ -1,10 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+// import React from "react";
 
-import { useWindowSize } from "../../../hooks/";
+import React, { useEffect, useRef, useState } from "react";
+// import { useWindowSize } from "@biscuitnick/biscuit-library";
 
-import { Board, Biscuit, BiscuitEditor } from "../..";
-
-export interface biscuitParams {
+import { useWindowSize } from "../../../hooks";
+import Board from "./Board";
+import Biscuit from "../Content/Biscuit";
+import BiscuitEditor from "../../Editors/BiscuitEditor";
+import SaveToCloud from "../../../api/saveToCloud";
+import SetStack from "../../Inputs/SetStack";
+export interface BiscuitProps {
   width?: number;
   height?: number;
   contentIDs: string[];
@@ -16,7 +21,7 @@ export interface biscuitParams {
 const Konva = require("konva");
 Konva.showWarnings = false;
 
-const BiscuitBoard = (props: biscuitParams) => {
+const BiscuitBoard = (props: BiscuitProps) => {
   const { contentIDs: initIDs, contentObject: initContentObject } = props;
 
   const { width, height } = useWindowSize();
@@ -24,33 +29,35 @@ const BiscuitBoard = (props: biscuitParams) => {
   const dragItem = useRef<any>(null);
 
   const [selectedID, setSelectedID] = useState("");
+
   const [contentIDs, setContentIDs] = useState(initIDs);
+  const [contentOrder, setOrder] = useState(initIDs.map((id, i) => i));
+
   const [contentObject, setContentObject] = useState(initContentObject);
   const [changeLog, setChangeLog] = useState<any>([]);
 
   const contentItem = contentObject[selectedID];
-
   const squareWH = Math.min(width, height);
 
   const handleClick = (e: { target: { attrs: any } }) => {
     const attrs = e.target.attrs;
-    const { id } = attrs;
+    const { contentID } = attrs;
 
-    setSelectedID(id || "");
+    setSelectedID(contentID || "");
   };
 
   const handleDrag = (e: { target: { attrs: any } }) => {
     const attrs = e.target.attrs;
-    const { id, x, y, box } = attrs;
+    const { contentID, x, y, box } = attrs;
 
-    setSelectedID(id);
+    setSelectedID(contentID);
 
-    if (dragItem.current != id) {
-      dragItem.current = id;
+    if (dragItem.current != contentID) {
+      dragItem.current = contentID;
     } else {
       dragItem.current = "";
 
-      const contentItem = contentObject[id];
+      const contentItem = contentObject[contentID];
 
       let newR_X = x / box.width; //squareWH;
       let newR_Y = y / box.height; //squareWH;
@@ -62,7 +69,7 @@ const BiscuitBoard = (props: biscuitParams) => {
         setChangeLog([
           ...changeLog,
           {
-            id: id,
+            contentID,
             attr: "r_x",
             r_x: newR_X,
             r_y: newR_Y,
@@ -73,7 +80,7 @@ const BiscuitBoard = (props: biscuitParams) => {
       } else {
         let copyLog = [...changeLog];
         copyLog[copyLog.length - 1] = {
-          id: id,
+          contentID,
           attr: "r_x",
           r_x: newR_X,
           r_y: newR_Y,
@@ -85,7 +92,7 @@ const BiscuitBoard = (props: biscuitParams) => {
 
       setContentObject({
         ...contentObject,
-        [id]: {
+        [contentID]: {
           ...contentItem,
           r_x: newR_X,
           r_y: newR_Y,
@@ -107,7 +114,7 @@ const BiscuitBoard = (props: biscuitParams) => {
       setChangeLog([
         ...changeLog,
         {
-          id: selectedID,
+          contentID: selectedID,
           attr,
           [attr]: value,
           method,
@@ -117,7 +124,7 @@ const BiscuitBoard = (props: biscuitParams) => {
     } else {
       let copyLog = [...changeLog];
       copyLog[copyLog.length - 1] = {
-        id: selectedID,
+        contentID: selectedID,
         attr,
         [attr]: value,
         method,
@@ -127,9 +134,15 @@ const BiscuitBoard = (props: biscuitParams) => {
     }
   };
 
-  useEffect(() => {
-    console.log(changeLog);
-  }, [changeLog.length]);
+  const update = (newOrder: number[], stack: string[]) => {
+    if (contentIDs.length > newOrder.length) {
+      // setOrder(myOrder);
+    } else {
+      setOrder(newOrder);
+    }
+  };
+
+  useEffect(() => {}, [changeLog.length]);
 
   return (
     <>
@@ -137,7 +150,7 @@ const BiscuitBoard = (props: biscuitParams) => {
         <Biscuit
           box={{ width, height }}
           contentObject={contentObject}
-          contentIDs={contentIDs}
+          contentIDs={contentOrder.map((n) => contentIDs[n])}
           canvasRef={canvasRef}
           handleClick={handleClick}
           handleDrag={handleDrag}
@@ -145,7 +158,30 @@ const BiscuitBoard = (props: biscuitParams) => {
           id={"b1"}
         />
       </Board>
-      <div style={{ position: "absolute", left: 0, top: 0 }}>
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          top: 0,
+          width: 400,
+          maxHeight: height,
+          overflow: "auto",
+        }}
+      >
+        <SetStack
+          setContentObject={setContentObject}
+          contentObject={contentObject}
+          contentStack={contentIDs}
+          listOrder={contentOrder}
+          id={"contentIDs"}
+          // contentIndex={0}
+          update={update}
+        />
+        <SaveToCloud
+          contentObject={contentObject}
+          contentIDs={contentIDs}
+          biscuitID={"test-" + Math.floor(Math.random() * 100)}
+        />
         <BiscuitEditor
           {...{
             selectedID,

@@ -19,6 +19,7 @@ export interface textBuild {
     width: number;
     height: number;
   };
+  active?: boolean;
 }
 
 // Build Methods

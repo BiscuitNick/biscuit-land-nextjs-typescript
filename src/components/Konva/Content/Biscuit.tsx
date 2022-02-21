@@ -1,7 +1,14 @@
 import { Group } from "react-konva";
 import { Eye, AnimatedRectangle, AnimatedImage, AnimatedText } from "..";
-import { getInnerPosition } from "../../../utils";
+// import  from "../../../utils/getInnerPosition";
+// import {
+//   useStagePositions,
+//   getInnerPosition,
+// } from "@biscuitnick/biscuit-library";
+
 import useStagePositions from "../../../hooks/useStagePositions";
+import getInnerPosition from "../../../utils/getInnerPosition";
+
 import {
   buildEyeProps,
   buildRectProps,
@@ -43,9 +50,12 @@ const Biscuit = (props: BiscuitProps) => {
     x: (width - squareWH) / 2 + x,
     y: (height - squareWH) / 2 + y,
   };
-  const BiscuitContent = contentIDs.map((id) => {
-    let contentType = id?.split("_")[0];
-    const data = contentObject[id];
+  const BiscuitContent = contentIDs.map((contentID) => {
+    let contentType = contentID?.split("_")[0];
+    const data = contentObject[contentID];
+    const { active } = data;
+
+    if (!active) return null;
 
     switch (contentType) {
       case "eye":
@@ -64,8 +74,8 @@ const Biscuit = (props: BiscuitProps) => {
 
         return (
           <Eye
-            key={id}
-            id={id}
+            key={contentID}
+            contentID={contentID}
             {...eyeprops}
             innerXY={innerXY}
             handleDrag={handleDrag}
@@ -80,8 +90,8 @@ const Biscuit = (props: BiscuitProps) => {
 
         return (
           <AnimatedRectangle
-            key={id}
-            id={id}
+            key={contentID}
+            contentID={contentID}
             {...rectProps}
             handleDrag={handleDrag}
             handleClick={handleClick}
@@ -93,12 +103,10 @@ const Biscuit = (props: BiscuitProps) => {
           absolutes: squareBox, //{ width: squareWH, height: squareWH },
         });
 
-        console.log(imageProps);
-
         return (
           <AnimatedImage
-            key={id}
-            id={id}
+            key={contentID}
+            contentID={contentID}
             {...imageProps}
             handleDrag={handleDrag}
             handleClick={handleClick}
@@ -112,8 +120,8 @@ const Biscuit = (props: BiscuitProps) => {
 
         return (
           <AnimatedText
-            key={id}
-            id={id}
+            key={contentID}
+            contentID={contentID}
             {...textProps}
             handleDrag={handleDrag}
             handleClick={handleClick}

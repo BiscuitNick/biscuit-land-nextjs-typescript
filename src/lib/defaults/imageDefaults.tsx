@@ -17,6 +17,8 @@ const imageDefaults = {
   r_width: 1,
   r_height: 1,
   r_strokeWidth: 0.02,
+
+  active: true,
 };
 
 export default imageDefaults;

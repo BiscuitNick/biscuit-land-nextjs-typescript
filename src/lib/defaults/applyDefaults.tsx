@@ -36,6 +36,7 @@ interface contentItemProps {
   r_width?: number;
   r_height?: number;
   r_radius?: number;
+  active?: boolean;
 }
 
 const applyDefaults = (contentItem: contentItemProps) => {

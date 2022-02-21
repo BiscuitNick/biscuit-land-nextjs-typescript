@@ -26,6 +26,7 @@ export interface eyeBuild {
     width: number;
     height: number;
   };
+  active?: boolean;
 }
 
 // Build Methods

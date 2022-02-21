@@ -27,6 +27,7 @@ const textDefaults = {
   r_y: 0.5,
   r_width: 1,
   r_height: 1,
+  active: true,
 };
 
 export default textDefaults;

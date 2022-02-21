@@ -1,18 +1,7 @@
-import React, { useRef } from "react";
+import React from "react";
 
 const Konva = require("react-konva");
 const { Stage, Layer } = Konva;
-
-const getStageData = (canvasRef: any) => {
-  if (!canvasRef) {
-    return null;
-  }
-  if (!canvasRef.current) return null;
-  else {
-    const stageData = canvasRef.current.getStage();
-    return stageData;
-  }
-};
 
 export interface BoardProps {
   width: number;

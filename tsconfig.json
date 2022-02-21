@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/getTextLines.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/revalidate.js", "src/utils/getTextLines.js"],
   "exclude": ["node_modules"]
 }
