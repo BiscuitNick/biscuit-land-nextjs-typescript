@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Dice from ".";
-import { standardFaces } from "./standardFaces";
+import { standardFaces, puppyFaces } from "./standardFaces";
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Biscuit-Library/Dice/Dice",
@@ -11,7 +11,7 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Dice> = (args) => <Dice {...args} />;
 
-export const Example = ({
+export const StandardDice = ({
   size = 200,
   faces = standardFaces,
   minRotation = false,
@@ -21,7 +21,31 @@ export const Example = ({
 
   return (
     <Dice
-      size={200}
+      size={size}
+      n={n}
+      counter={counter}
+      onClick={() => {
+        set(Math.floor(Math.random() * standardFaces.length));
+        increment(counter + 1);
+      }}
+      faces={faces}
+      margin={0}
+      minRotation={minRotation}
+    />
+  );
+};
+
+export const PuppyDice = ({
+  size = 200,
+  faces = puppyFaces,
+  minRotation = false,
+}: any) => {
+  const [n, set] = useState(Math.floor(Math.random() * standardFaces.length));
+  const [counter, increment] = useState(0);
+
+  return (
+    <Dice
+      size={size}
       n={n}
       counter={counter}
       onClick={() => {
