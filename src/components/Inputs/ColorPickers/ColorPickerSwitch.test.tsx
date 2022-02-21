@@ -7,7 +7,7 @@ describe("ColorPickerSwitch", () => {
     render(
       <ColorPickerSwitch
         id={"ColorPickerSwitch"}
-        value={"#00ff00"}
+        value={"#00fff0"}
         toggleId={"TogleId"}
         toggleValue={true}
         onChange={(e: { target: { value: any } }) =>

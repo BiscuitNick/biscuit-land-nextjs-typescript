@@ -1,7 +1,6 @@
 import React from "react";
 // import "./ColorPickers.css";
 
-
 export interface ColorPickerSwitchProps {
   id: string;
   label?: string;
@@ -32,6 +31,7 @@ const ColorPickerSwitch = (props: ColorPickerSwitchProps) => {
       <input
         id={id}
         disabled={!toggleValue}
+        style={{ opacity: !toggleValue ? 0.5 : 1 }}
         type="color"
         value={value}
         onChange={onChange}
