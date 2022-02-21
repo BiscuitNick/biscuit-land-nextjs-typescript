@@ -9,8 +9,7 @@
     "test": "jest --watch",
     "test:ci": "jest --ci",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=e451ef7f83ca"
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@biscuitnick/biscuit-library": "^1.4.22",

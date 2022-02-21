@@ -13,8 +13,12 @@ const customJestConfig = {
     "^@/components/(.*)$": "<rootDir>/components/$1",
 
     "^@/pages/(.*)$": "<rootDir>/pages/$1",
+    ".(css|less|scss)$": "identity-obj-proxy",
+    "^konva": "konva/konva",
   },
   testEnvironment: "jest-environment-jsdom",
+
+  // testEnvironment: "jsdom",
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

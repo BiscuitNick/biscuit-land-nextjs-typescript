@@ -1,9 +1,6 @@
 // __tests__/index.test.jsx
 import React from "react";
 import { render, screen } from "@testing-library/react";
-//import {} from "@testing-library/react-hooks/dom";
-import TestRenderer from "react-test-renderer";
-
 import { renderHook, act } from "@testing-library/react-hooks";
 import BiscuitIndex from "../pages/index";
 
@@ -13,9 +10,15 @@ describe("Render <BiscuitIndex/>", () => {
   });
 });
 
-// describe("Render Header", () => {
+// describe("Render <BiscuitIndex/>", () => {
+//   it("render <BiscuitIndex/>", () => {
+//     render(<BiscuitIndex />);
+//   });
+// });
+
+// describe("Render Header", () => {w
 //   it("renders Header", () => {
-//     const RenderedBiscuit = render(<BiscuitIndex contentIDs={["one"]} />);
+//     const RenderedBiscuit = render(<BiscuitIndex />);
 //     expect(screen.getByRole("presentation"));
 //   });
 // });
