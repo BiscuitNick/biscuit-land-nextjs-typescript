@@ -140,7 +140,7 @@ const Dice = (props: Dice) => {
                 style={{
                   ...style,
                   boxSizing: "border-box",
-                  backgroundSize: size * 2,
+                  // backgroundSize: size * 2,
                   display: "grid",
                 }}
               >
