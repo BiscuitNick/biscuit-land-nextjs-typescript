@@ -71,9 +71,7 @@ const BiscuitEditor = (editorProps: EditorProps) => {
     editorProps;
 
   const [show, toggle] = useState(true);
-
   if (selectedID === "") return null;
-
   const contentType = selectedID.split("_")[0];
   const itemContent = contentObject[selectedID];
 

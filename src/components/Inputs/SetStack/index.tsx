@@ -198,10 +198,15 @@ const SetStack = (props: SetOrderProps) => {
 
         const content = contentObject[id];
 
-        const name = content.name || content.textContent || content.src || id;
+        if (!content) {
+          return null;
+        }
 
-        const fill = content.fill || "black";
-        const stroke = content.stroke || "white";
+        const name =
+          content?.name || content?.textContent || content?.src || id;
+
+        const fill = content?.fill || "black";
+        const stroke = content?.stroke || "white";
 
         const ContentIcon =
           contentType === "eye" ? (
@@ -209,7 +214,7 @@ const SetStack = (props: SetOrderProps) => {
               style={{ color: content.outerFill || content.innerFill }}
             />
           ) : contentType === "image" ? (
-            <img src={content.src} style={{ width: "100%", height: "100%" }} />
+            <img src={content?.src} style={{ width: "100%", height: "100%" }} />
           ) : contentType === "rect" ? (
             <RectangleIcon />
           ) : contentType === "text" ? (
@@ -280,7 +285,7 @@ const SetStack = (props: SetOrderProps) => {
 
             <ToggleSwitch
               id={"active"}
-              value={content.active}
+              value={content?.active}
               onChange={(e: { target: { checked: boolean } }) =>
                 setContentObject({
                   ...contentObject,

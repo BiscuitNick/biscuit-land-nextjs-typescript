@@ -7,6 +7,7 @@ import "../../../../styles/globals.css";
 export default {
   title: "Biscuit-Library/Inputs/SetStack",
   component: SetStack,
+
   argTypes: {
     contentObject: {
       defaultValue: {

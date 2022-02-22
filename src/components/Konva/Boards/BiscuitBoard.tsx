@@ -43,12 +43,17 @@ const BiscuitBoard = (props: BiscuitProps) => {
     const attrs = e.target.attrs;
     const { contentID } = attrs;
 
+    // console.log(contentID);
+
     setSelectedID(contentID || "");
   };
 
   const handleDrag = (e: { target: { attrs: any } }) => {
     const attrs = e.target.attrs;
     const { contentID, x, y, box } = attrs;
+
+    // console.log(attrs);
+    // return null;
 
     setSelectedID(contentID);
 
