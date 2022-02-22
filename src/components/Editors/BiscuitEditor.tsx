@@ -86,7 +86,20 @@ const BiscuitEditor = (editorProps: EditorProps) => {
     update,
   } = editorProps;
 
-  if (selectedID === "") return null;
+  if (selectedID === "") {
+    if (show)
+      return (
+        <SetStack
+          setContentObject={setContentObject}
+          contentObject={contentObject}
+          contentStack={contentIDs}
+          listOrder={contentOrder}
+          id={"contentIDs"}
+          update={update}
+        />
+      );
+    return null;
+  }
   const contentType = selectedID.split("_")[0];
   const itemContent = contentObject[selectedID];
 
@@ -225,9 +238,9 @@ const BiscuitEditor = (editorProps: EditorProps) => {
 
   return (
     <>
-      {show ? (
+      {show && selectedID ? (
         <div className="editor">{SetAttributes}</div>
-      ) : (
+      ) : show ? (
         <SetStack
           setContentObject={setContentObject}
           contentObject={contentObject}
@@ -236,7 +249,7 @@ const BiscuitEditor = (editorProps: EditorProps) => {
           id={"contentIDs"}
           update={update}
         />
-      )}
+      ) : null}
     </>
   );
 };
