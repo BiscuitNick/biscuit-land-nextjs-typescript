@@ -237,6 +237,8 @@ const SetStack = (props: SetOrderProps) => {
 
               display: "grid",
               gridTemplateColumns: "75px 50px 1fr 100px",
+
+              opacity: content?.active ? 1 : 0.5,
             }}
             key={i}
           >
