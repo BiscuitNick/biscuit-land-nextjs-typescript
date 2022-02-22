@@ -127,19 +127,20 @@ const AnimatedText = (props: AnimatedTextProps) => {
 
         // immediate: true,
 
-        // immmediate: [
-        //   "text",
-        //   "fontSize",
-        //   "width",
-        //   "height",
-        //   "fontFamily",
-        //   "fontStyle",
-        //   "strokeWidth",
-        //   "stroke",
-        //   "fill",
-        //   "y",
-        //   "align",
-        // ],
+        immmediate: [
+          // "text",
+          // "fontSize",
+          // "width",
+          // "height",
+          // "fontFamily",
+          // "fontStyle",
+          // "strokeWidth",
+          // "stroke",
+          // "fill",
+          "x",
+          "y",
+          // "align",
+        ],
       }; //, fontSize: adjustedFontSize, strokeWidth };
     },
     [textLines, strokeWidthFactor, fill, stroke, align]
@@ -166,7 +167,7 @@ const AnimatedText = (props: AnimatedTextProps) => {
     offsetX,
     offsetY,
     rotation,
-    // immediate: ["x", "y", "offsetX", "offsetY", "width", "height"],
+    immediate: ["x", "y", "offsetX", "offsetY", "width", "height"],
   });
 
   return (
