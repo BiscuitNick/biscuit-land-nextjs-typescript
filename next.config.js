@@ -9,6 +9,12 @@ const nextConfig = {
     CLOUDAPITOKEN: process.env.CLOUDAPITOKEN,
     CLOUDAPIPATH: process.env.CLOUDAPIPATH,
   },
+
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Important: return the modified config
+
+    return config;
+  },
 };
 
 module.exports = nextConfig;

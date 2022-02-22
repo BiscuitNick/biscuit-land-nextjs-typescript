@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import BiscuitIndex from "../../pages/index";
+// import "../../styles/globals.css";
+import "../../styles/globals.css";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

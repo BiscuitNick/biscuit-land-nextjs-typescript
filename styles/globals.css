@@ -1,3 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Amatic+SC:wght@400;700&family=Anton&family=Architects+Daughter&family=Bebas+Neue&family=Bitter:ital,wght@0,400;0,700;1,400;1,700&family=Caveat:wght@400;700&family=Comfortaa:wght@400;700&family=Dancing+Script:wght@400;700&family=Fjalla+One&family=Indie+Flower&family=Kanit:ital,wght@0,400;0,700;1,400;1,700&family=Lobster&family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@400;700&family=Pacifico&family=Patrick+Hand&family=Permanent+Marker&family=Prompt:ital,wght@0,400;0,700;1,400;1,700&family=Righteous&family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Shadows+Into+Light&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Staatliches&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&family=Varela+Round&display=swap");
+font-family: "Abril Fatface", cursive;
+font-family: "Alfa Slab One", cursive;
+font-family: "Amatic SC", cursive;
+font-family: "Anton", sans-serif;
+font-family: "Architects Daughter", cursive;
+font-family: "Bebas Neue", cursive;
+font-family: "Bitter", serif;
+font-family: "Caveat", cursive;
+font-family: "Comfortaa", cursive;
+font-family: "Dancing Script", cursive;
+font-family: "Fjalla One", sans-serif;
+font-family: "Indie Flower", cursive;
+font-family: "Kanit", sans-serif;
+font-family: "Lobster", cursive;
+font-family: "Merriweather", serif;
+font-family: "Open Sans", sans-serif;
+font-family: "Open Sans Condensed", sans-serif;
+font-family: "Oswald", sans-serif;
+font-family: "Pacifico", cursive;
+font-family: "Patrick Hand", cursive;
+font-family: "Permanent Marker", cursive;
+font-family: "Prompt", sans-serif;
+font-family: "Righteous", cursive;
+font-family: "Roboto", sans-serif;
+font-family: "Roboto Condensed", sans-serif;
+font-family: "Roboto Mono", monospace;
+font-family: "Shadows Into Light", cursive;
+font-family: "Source Code Pro", monospace;
+font-family: "Staatliches", cursive;
+font-family: "Ubuntu", sans-serif;
+font-family: "Ubuntu Mono", monospace;
+font-family: "Varela Round", sans-serif;
+
 html,
 body {
   padding: 0;
@@ -152,3 +186,12 @@ input:checked + .switchspan:before {
   touch-action: auto;
   user-select: auto;
 }
+
+@font-face {
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Alfa Slab One", sans-serif;
+  font-family: "Bebas Neue";
+}
+
+/* href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Arima+Madurai:wght@400;700&family=Audiowide&family=Baloo+2:wght@400;700&family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Bangers&family=Barrio&family=Bebas+Neue&family=Black+Ops+One&family=Bubblegum+Sans&family=Bungee+Inline&family=Bungee+Shade&family=Cabin+Sketch:wght@400;700&family=Chewy&family=Codystar:wght@300;400&family=Comfortaa:wght@400;700&family=Concert+One&family=Creepster&family=Fredericka+the+Great&family=Fredoka+One&family=Gruppo&family=Kavoon&family=Kranky&family=Lobster&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Love+Ya+Like+A+Sister&family=Luckiest+Guy&family=Megrim&family=Modak&family=Monoton&family=New+Rocker&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playball&family=Poiret+One&family=Righteous&family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Rubik:ital,wght@0,400;0,700;1,400;1,700&family=Sarina&family=Sigmar+One&family=Staatliches&family=Tourney:wght@400;700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&family=Unkempt:wght@400;700&family=Wallpoet&display=swap" */

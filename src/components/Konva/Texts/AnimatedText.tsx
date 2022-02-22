@@ -125,7 +125,7 @@ const AnimatedText = (props: AnimatedTextProps) => {
         align,
         hitStrokeWidth: fontSize,
 
-        immediate: true,
+        // immediate: true,
 
         // immmediate: [
         //   "text",
@@ -166,7 +166,7 @@ const AnimatedText = (props: AnimatedTextProps) => {
     offsetX,
     offsetY,
     rotation,
-    immediate: ["x", "y", "offsetX", "offsetY", "width", "height"],
+    // immediate: ["x", "y", "offsetX", "offsetY", "width", "height"],
   });
 
   return (
