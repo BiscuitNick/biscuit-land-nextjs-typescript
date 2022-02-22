@@ -7,8 +7,9 @@ import { useWindowSize } from "../../../hooks";
 import Board from "./Board";
 import Biscuit from "../Content/Biscuit";
 import BiscuitEditor from "../../Editors/BiscuitEditor";
-import SaveToCloud from "../../../api/saveToCloud";
-import SetStack from "../../Inputs/SetStack";
+import ContextBar from "../../Containers/ContextBar";
+import IconButton from "../../Inputs/Buttons/IconButton";
+import saveToCloud from "../../../api/saveToCloud";
 export interface BiscuitProps {
   width?: number;
   height?: number;
@@ -22,6 +23,7 @@ const Konva = require("konva");
 Konva.showWarnings = false;
 
 const BiscuitBoard = (props: BiscuitProps) => {
+  const [show, toggle] = useState(false);
   const { contentIDs: initIDs, contentObject: initContentObject } = props;
 
   const { width, height } = useWindowSize();
@@ -29,15 +31,13 @@ const BiscuitBoard = (props: BiscuitProps) => {
   const dragItem = useRef<any>(null);
 
   const [selectedID, setSelectedID] = useState("");
-
   const [contentIDs, setContentIDs] = useState(initIDs);
   const [contentOrder, setOrder] = useState(initIDs.map((id, i) => i));
-
   const [contentObject, setContentObject] = useState(initContentObject);
   const [changeLog, setChangeLog] = useState<any>([]);
 
-  const contentItem = contentObject[selectedID];
-  const squareWH = Math.min(width, height);
+  // const contentItem = contentObject[selectedID];
+  // const squareWH = Math.min(width, height);
 
   const handleClick = (e: { target: { attrs: any } }) => {
     const attrs = e.target.attrs;
@@ -51,9 +51,6 @@ const BiscuitBoard = (props: BiscuitProps) => {
   const handleDrag = (e: { target: { attrs: any } }) => {
     const attrs = e.target.attrs;
     const { contentID, x, y, box } = attrs;
-
-    // console.log(attrs);
-    // return null;
 
     setSelectedID(contentID);
 
@@ -173,28 +170,56 @@ const BiscuitBoard = (props: BiscuitProps) => {
           overflow: "auto",
         }}
       >
-        <SetStack
-          setContentObject={setContentObject}
-          contentObject={contentObject}
-          contentStack={contentIDs}
-          listOrder={contentOrder}
-          id={"contentIDs"}
-          // contentIndex={0}
-          update={update}
-        />
-        <SaveToCloud
-          contentObject={contentObject}
-          contentIDs={contentIDs}
-          biscuitID={"test-" + Math.floor(Math.random() * 100)}
-        />
         <BiscuitEditor
           {...{
             selectedID,
             contentObject,
             setContentObject,
             updateChangeLog,
+            show,
+            contentIDs,
+            contentOrder,
+            update,
           }}
         />
+
+        <ContextBar show={true}>
+          <IconButton
+            icon={"layers"}
+            handleClick={() => {
+              setSelectedID("");
+              toggle(!show);
+            }}
+            size={"large"}
+          />
+
+          <IconButton
+            icon={selectedID.split("_")[0]}
+            handleClick={() => toggle(!show)}
+            size={"large"}
+          />
+
+          <IconButton
+            icon={"close"}
+            handleClick={() => {
+              toggle(false);
+              setSelectedID("");
+            }}
+            size={"large"}
+          />
+
+          {/* <IconButton
+            icon={"save"}
+            handleClick={() =>
+              saveToCloud({
+                contentIDs,
+                contentObject,
+                biscuitID: "test-" + Math.floor(Math.random() * 100),
+              })
+            }
+            size={"large"}
+          /> */}
+        </ContextBar>
       </div>
     </>
   );

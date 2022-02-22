@@ -8,6 +8,10 @@ import ToggleSwitch from "../Inputs/ToggleSwitch";
 
 import inputAttributes from "../../lib/defaults/inputAttributes";
 
+import IconButton from "../Inputs/Buttons/IconButton";
+
+import SetStack from "../Inputs/SetStack";
+
 const sharedColorAttrs = ["fill", "stroke"];
 const sharedNumberAttrs = ["r_x", "r_y", "r_width", "r_height", "rotation"];
 const sharedToggleAttrs = ["draggable"];
@@ -64,13 +68,24 @@ interface EditorProps {
   };
   setContentObject: ({}: any) => void;
   updateChangeLog: (id: string, value: any) => void;
+  show: boolean;
+  contentIDs: string[];
+  contentOrder: number[];
+  update: any;
 }
 
 const BiscuitEditor = (editorProps: EditorProps) => {
-  const { selectedID, contentObject, setContentObject, updateChangeLog } =
-    editorProps;
+  const {
+    selectedID,
+    contentObject,
+    setContentObject,
+    updateChangeLog,
+    show,
+    contentIDs,
+    contentOrder,
+    update,
+  } = editorProps;
 
-  const [show, toggle] = useState(true);
   if (selectedID === "") return null;
   const contentType = selectedID.split("_")[0];
   const itemContent = contentObject[selectedID];
@@ -211,29 +226,17 @@ const BiscuitEditor = (editorProps: EditorProps) => {
   return (
     <>
       {show ? (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr",
-            width: 500,
-            padding: 10,
-
-            maxHeight: "100vh",
-            overflow: "auto",
-
-            gridGap: 10,
-          }}
-        >
-          {SetAttributes}
-        </div>
-      ) : null}
-
-      <button
-        style={{ position: "fixed", top: 0, right: 0 }}
-        onClick={() => toggle(!show)}
-      >
-        Toggle
-      </button>
+        <div className="editor">{SetAttributes}</div>
+      ) : (
+        <SetStack
+          setContentObject={setContentObject}
+          contentObject={contentObject}
+          contentStack={contentIDs}
+          listOrder={contentOrder}
+          id={"contentIDs"}
+          update={update}
+        />
+      )}
     </>
   );
 };

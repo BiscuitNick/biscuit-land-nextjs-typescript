@@ -7,30 +7,11 @@ interface saveProps {
   biscuitID: string;
 }
 
-const SaveToCloud = (props: saveProps) => {
-  const { contentIDs, contentObject, biscuitID } = props;
+// const SaveToCloud = (props: saveProps) => {
+//   return <button onClick={() => saveContent(body)}>Save To Cloud</button>;
+// };
 
-  const contentArray = contentObjectToContentArray(contentObject);
-
-  // const contentArray = Object.keys(contentObject).map((contentID) => {
-  //   let content = contentObject[contentID];
-  //   delete content.id;
-
-  //   Object.keys(content).forEach((key) => {
-  //     if (content[key] === null || content[key] === undefined) {
-  //       delete content[key];
-  //     }
-  //   });
-
-  //   return content;
-  // });
-
-  const body = { contentIDs, contentArray, biscuitID };
-
-  return <button onClick={() => saveContent(body)}>Save To Cloud</button>;
-};
-
-export default SaveToCloud;
+// export default SaveToCloud;
 
 const contentObjectToContentArray = (contentObject: any) => {
   const contentArray = Object.keys(contentObject).map((contentID) => {
@@ -48,7 +29,13 @@ const contentObjectToContentArray = (contentObject: any) => {
   return contentArray;
 };
 
-async function saveContent(body: any) {
+async function saveToCloud(props: saveProps) {
+  const { contentIDs, contentObject, biscuitID } = props;
+
+  const contentArray = contentObjectToContentArray(contentObject);
+
+  const body = { contentIDs, contentArray, biscuitID };
+
   fetch(`${APIPATH}/biscuits/`, {
     method: "POST",
     mode: "cors",
@@ -61,3 +48,5 @@ async function saveContent(body: any) {
     .then((response) => response.json())
     .then((data) => console.log(data));
 }
+
+export default saveToCloud;
